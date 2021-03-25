@@ -105,8 +105,8 @@ h1{
     border: solid blue;
     padding: 10px;
     text-align: center;
-    height: 400px;
     width: 100%;
+    margin: 60px 0 0 0;
 }
 
 .book{
@@ -115,7 +115,7 @@ h1{
     background-size: contain;
     background-repeat: no-repeat;
     height: 170px;
-    width: 80px;
+    width: 50px;
     border: 1px solid red;
 }
 .book:hover{
