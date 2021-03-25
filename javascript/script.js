@@ -55,7 +55,7 @@ const getBookInfo = bookInfo => {
     infoList.classList.add('book-info');
     bookInfoSection.append(infoList);
     for (key in bookInfo) {
-        if (key === "title" || key === "author" || key === "released") {
+        if (key === "title" || key === "author" || key === "release_date") {
             let listItemName = key.charAt(0).toUpperCase() + key.slice(1);
             let listItems = document.createElement('dt');
             let listDescription = document.createElement('dd');
@@ -68,10 +68,9 @@ const getBookInfo = bookInfo => {
                 listDescription.innerHTML = bookInfo.title;
             } else if (listItems.id === "author") {
                 listDescription.innerHTML = bookInfo.author;
-            } else if (listItems.id === "released") {
-                listDescription.innerHTML = bookInfo.released;
+            } else if (listItems.id === "release_date") {
+                listDescription.innerHTML = bookInfo.release_date;
             }
-            listItems.append(listDescription);
         }
     }
 }
@@ -83,7 +82,7 @@ const removeAllChildren = (parent) => {
 }
 // delete single book
 const removeBook = async () => {
-    let res = await fetch(`https://myapi-profstream.herokuapp.com/api/f97dfc/books/${bookId}`,
+    let res = await fetch(`https://myapi-profstream.herokuapp.com/api/f97dfc/books/${currentBookId}`,
         {
             method: 'delete'
         });
@@ -131,8 +130,9 @@ formInput.addEventListener("submit", async (e) => {
     const author = form.author.value;
     const releaseDate = form.releaseDate.value;
     const image = form.image.value;
-    const newBook = new BookInfo(1, title, author, releaseDate, image);
-    const createdBook = await CoreBookService.createNewBook(newBook);
+    const newBoook = new BookInfo(1, title, author, releaseDate, image);
+    console.log(newBoook)
+    const createdBook = await CoreBookService.createNewBook(newBoook);
     console.log(createdBook);
     getBookInfo(createdBook);
 });
