@@ -60,17 +60,29 @@ h1{
 }
 
 #books{
+    background: url('./assets/images/bookshelf.png');
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     border: solid blue;
     padding: 10px;
     text-align: center;
+    height: 470px;
 }
 
 .book{
     padding: 5px;
+    background: url('./assets/images/blue-book-on-shelf.png');
+    background-repeat: no-repeat;
+    height: 150px;
+    width: 60px;
+    margin: 0 0 65px 0;
 }
 .book:hover{
     cursor: pointer;
-    color: purple;
+    background: url('./assets/images/blue-book-off-shelf.png');
+    background-repeat: no-repeat;
 }
 
 .current-book{
@@ -96,24 +108,4 @@ dd{
 }
 .hide{
     display: none;
-}
-
-.bookshelf {
-    background-image: url('./assets/images/bookshelf.png');
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 150px;
-}
-
-.bookOnShelf {
-    background: url('./assets/images/blue-book-on-shelf.png');
-    background-repeat: no-repeat;
-    height: 200px;
-    width: 100px;
-}
-
-.bookOnShelf:hover {
-    background: url('./assets/images/blue-book-off-shelf.png');
-    background-repeat: no-repeat;
 }
