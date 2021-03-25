@@ -26,7 +26,6 @@ class CoreBookService {
     }
 
     static async getAllBooks() {
-        console.log(`${API_URL}/books`);
         const res = await fetch(`${API_URL}/books`);
         const data = await res.json();
         const allBooks = [];
@@ -38,9 +37,9 @@ class CoreBookService {
     }
 
     static async getBookInfo(bookId) {
-        let res = await fetch(`${API_URL}/books/${bookId}`);
-        let bookInfo = await res.json();
-        currentBook = new BookInfo(bookInfo.id, bookInfo.title, bookInfo.author, bookInfo.release_date, bookInfo.image)
+        const res = await fetch(`${API_URL}/books/${bookId}`);
+        const bookInfo = await res.json();
+        const currentBook = new BookInfo(bookInfo.id, bookInfo.title, bookInfo.author, bookInfo.release_date, bookInfo.image)
         return currentBook;
     }
 
