@@ -98,30 +98,44 @@ h1{
 #books{
     background: url('./assets/images/bookshelf.png');
     background-repeat: no-repeat;
+<<<<<<< HEAD
     background-size: contain;
     background-position: center;
+=======
+    background-size: 100%;
+>>>>>>> 2c19816ac8183cac497b49e114554f8a80b8d1ef
     display: flex;
     justify-content: space-around;
     align-items: center;
     border: solid blue;
     padding: 10px;
     text-align: center;
-    height: 470px;
+    height: 300px;
+    width: 100%;
 }
 
 .book{
-    padding: 5px;
+    display: flex;
     background: url('./assets/images/blue-book-on-shelf.png');
+    background-size: contain;
     background-repeat: no-repeat;
     background-size: contain;
     height: 150px;
     width: 60px;
-    margin: 0 0 65px 0;
+    margin: 0 0 68px 0;
+    border: 1px solid red;
 }
 .book:hover{
     cursor: pointer;
     background: url('./assets/images/blue-book-off-shelf.png');
+    background-size: contain;
     background-repeat: no-repeat;
+}
+
+.bookTitle {
+    transform: rotate(90deg);
+    font-size: 20px;
+    border: 1px solid green;
 }
 
 .current-book{
