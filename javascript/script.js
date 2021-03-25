@@ -13,6 +13,9 @@ const formInput = document.querySelector('#form-input');
 //VARIABLES
 let currentBookId;
 
+//CONSTANTS
+const BOOK_COLORS = ['blueBook', 'greenBook', 'purpleBook', 'redBook', 'yellowBook'];
+
 //FUNCTIONS
 // get index of books from api
 const getAllBooks = async () => {
@@ -21,7 +24,10 @@ const getAllBooks = async () => {
         // new divs for each book
         const newBookDiv = document.createElement('div');
         const newBookTitle = document.createElement('div');
-        newBookDiv.classList.add('book');
+        
+        // add random color class
+        newBookDiv.classList.add(BOOK_COLORS[Math.floor(Math.random() * BOOK_COLORS.length)]);
+        // newBookDiv.classList.add('book');
         newBookTitle.id = data[i].id;
         // set book title
         newBookTitle.innerHTML = data[i].title;
