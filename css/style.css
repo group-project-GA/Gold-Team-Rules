@@ -96,7 +96,7 @@ h1{
 }
 
 .books{
-    background: url('../assets/images/bookshelf.png');
+    background: url('./images/bookshelf.png');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;

@@ -24,7 +24,6 @@ const getAllBooks = async () => {
         // new divs for each book
         const newBookDiv = document.createElement('div');
         const newBookTitle = document.createElement('div');
-        
         // add random color class
         newBookDiv.classList.add(BOOK_COLORS[Math.floor(Math.random() * BOOK_COLORS.length)]);
         // newBookDiv.classList.add('book');
@@ -32,7 +31,7 @@ const getAllBooks = async () => {
         // set book title
         newBookTitle.innerHTML = data[i].title;
         newBookTitle.classList.add('bookTitle');
-        // add to DOM
+        newBookTitle.id = data[i].id;
         allBooksSection.append(newBookDiv);
         newBookDiv.append(newBookTitle);
     }
@@ -56,6 +55,7 @@ const getBookInfo = bookInfo => {
     infoList.classList.add('book-info');
     bookInfoSection.append(infoList);
     for (key in bookInfo) {
+        if (key === "title" || key === "author" || key === "released"){ 
         let listItemName = key.charAt(0).toUpperCase() + key.slice(1);
         let listItems = document.createElement('dt');
         let listDescription = document.createElement('dd');
@@ -69,10 +69,11 @@ const getBookInfo = bookInfo => {
         } else if (listItems.id === "author") {
             listDescription.innerHTML = bookInfo.author;
         } else if (listItems.id === "released") {
-            listDescription.innerHTML = bookInfo.release_date;
+            listDescription.innerHTML = bookInfo.released;
         }
         listItems.append(listDescription);
     }
+ }
 }
 
 const removeAllChildren = (parent) => {
@@ -82,7 +83,7 @@ const removeAllChildren = (parent) => {
 }
 // delete single book
 const removeBook = async () => {
-    let res = await fetch(`https://myapi-profstream.herokuapp.com/api/f97dfc/books/${currentBookId}`,
+    let res = await fetch(`https://myapi-profstream.herokuapp.com/api/f97dfc/books/${bookId}`,
         {
             method: 'delete'
         });
@@ -94,11 +95,10 @@ const removeBook = async () => {
 //EVENT LISTENERS
 
 allBooksSection.addEventListener("click", async (e) => {
-    if (e.target.id)
-    {
-        const bookId = e.target.id;
-        const bookInfo = await CoreBookService.getBookInfo(bookId);
-        getBookInfo(bookInfo);
+    if(e.target.id){ 
+    const bookId = e.target.id;
+    const bookInfo = await CoreBookService.getBookInfo(bookId);
+    getBookInfo(bookInfo);
     }
 })
 
