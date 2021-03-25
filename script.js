@@ -10,7 +10,6 @@ const deleteButton = document.querySelector(".delete");
 const editButton = document.querySelector('.edit');
 
 
-console.log(editButtonsSection);
 
 //CONSTANTS
 class CurrentBookInfo {
@@ -35,10 +34,11 @@ const getAllBooks = async () => {
         const newBookDiv = document.createElement('div');
         const newBookTitle = document.createElement('div');
         newBookDiv.classList.add('book');
-        newBookDiv.id = data[i].id;
+        // newBookDiv.id = data[i].id;
         // newBookDiv.innerHTML = data[i].title;
         newBookTitle.innerHTML = data[i].title;
         newBookTitle.classList.add('bookTitle');
+        newBookTitle.id = data[i].id;
         allBooksSection.append(newBookDiv);
         newBookDiv.append(newBookTitle);
     } 
@@ -98,9 +98,11 @@ const removeBook = async () => {
 
 //EVENT LISTENERS
 allBooksSection.addEventListener("click", (book) => {
+    if(book.target.id){ 
     currentBookId = book.target.id;
     // console.log(currentBookId);
     getBookInfo();
+    }
 })
 
 allBooksButton.addEventListener("click", () => {
