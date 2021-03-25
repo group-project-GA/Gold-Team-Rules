@@ -10,6 +10,17 @@ const editButton = document.querySelector('.edit');
 const formSection = document.querySelector('.input-forms');
 const formInput = document.querySelector('#form-input');
 
+//CONSTANTS
+class CurrentBookInfo {
+    constructor(title, author, released) {
+        this.title = title,
+            this.author = author,
+            this.released = released
+    }
+}
+
+//VARIABLES
+let currentBook;
 
 //FUNCTIONS
 // get index of books from api
@@ -81,7 +92,6 @@ const removeBook = async () => {
 
 
 //EVENT LISTENERS
-
 window.addEventListener("load", getAllBooks);
 
 allBooksSection.addEventListener("click", async (e) => {
