@@ -8,11 +8,6 @@ const editButtonsSection = document.querySelector(".edit-buttons")
 const deleteButton = document.querySelector(".delete");
 const editButton = document.querySelector('.edit');
 
-<<<<<<< HEAD:script.js
-
-=======
-console.log(editButtonsSection);
->>>>>>> dc3a3233b32f70f36253133639745e6198393413:javascript/script.js
 
 //CONSTANTS
 class CurrentBookInfo {
@@ -38,19 +33,11 @@ const getAllBooks = async () => {
         const newBookDiv = document.createElement('div');
         const newBookTitle = document.createElement('div');
         newBookDiv.classList.add('book');
-<<<<<<< HEAD:script.js
         // newBookDiv.id = data[i].id;
         // newBookDiv.innerHTML = data[i].title;
         newBookTitle.innerHTML = data[i].title;
         newBookTitle.classList.add('bookTitle');
         newBookTitle.id = data[i].id;
-=======
-        newBookDiv.id = data[i].id;
-        // set book title
-        newBookTitle.innerHTML = data[i].title;
-        newBookTitle.classList.add('bookTitle');
-        // add to DOM
->>>>>>> dc3a3233b32f70f36253133639745e6198393413:javascript/script.js
         allBooksSection.append(newBookDiv);
         newBookDiv.append(newBookTitle);
     } 
