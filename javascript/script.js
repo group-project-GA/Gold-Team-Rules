@@ -55,25 +55,25 @@ const getBookInfo = bookInfo => {
     infoList.classList.add('book-info');
     bookInfoSection.append(infoList);
     for (key in bookInfo) {
-        if (key === "title" || key === "author" || key === "released"){ 
-        let listItemName = key.charAt(0).toUpperCase() + key.slice(1);
-        let listItems = document.createElement('dt');
-        let listDescription = document.createElement('dd');
-        // set elements IDs to the property key
-        listItems.id = key;
-        listItems.innerHTML = `${listItemName}:`;
-        infoList.append(listItems);
-        // display books info
-        if (listItems.id === "title") {
-            listDescription.innerHTML = bookInfo.title;
-        } else if (listItems.id === "author") {
-            listDescription.innerHTML = bookInfo.author;
-        } else if (listItems.id === "released") {
-            listDescription.innerHTML = bookInfo.released;
+        if (key === "title" || key === "author" || key === "released") {
+            let listItemName = key.charAt(0).toUpperCase() + key.slice(1);
+            let listItems = document.createElement('dt');
+            let listDescription = document.createElement('dd');
+            // set elements IDs to the property key
+            listItems.id = key;
+            listItems.innerHTML = `${listItemName}:`;
+            infoList.append(listItems);
+            // display books info
+            if (listItems.id === "title") {
+                listDescription.innerHTML = bookInfo.title;
+            } else if (listItems.id === "author") {
+                listDescription.innerHTML = bookInfo.author;
+            } else if (listItems.id === "released") {
+                listDescription.innerHTML = bookInfo.released;
+            }
+            listItems.append(listDescription);
         }
-        listItems.append(listDescription);
     }
- }
 }
 
 const removeAllChildren = (parent) => {
@@ -95,10 +95,10 @@ const removeBook = async () => {
 //EVENT LISTENERS
 
 allBooksSection.addEventListener("click", async (e) => {
-    if(e.target.id){ 
-    const bookId = e.target.id;
-    const bookInfo = await CoreBookService.getBookInfo(bookId);
-    getBookInfo(bookInfo);
+    if (e.target.id) {
+        const bookId = e.target.id;
+        const bookInfo = await CoreBookService.getBookInfo(bookId);
+        getBookInfo(bookInfo);
     }
 })
 
@@ -131,8 +131,8 @@ formInput.addEventListener("submit", async (e) => {
     const author = form.author.value;
     const releaseDate = form.releaseDate.value;
     const image = form.image.value;
-    const newBoook = new BookInfo(1, title, author, releaseDate, image);
-    const createdBook = await CoreBookService.createNewBook(newBoook);
+    const newBook = new BookInfo(1, title, author, releaseDate, image);
+    const createdBook = await CoreBookService.createNewBook(newBook);
     console.log(createdBook);
     getBookInfo(createdBook);
 });
