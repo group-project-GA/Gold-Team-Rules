@@ -40,12 +40,8 @@ const getAllBooks = async () => {
         newBookTitle.innerHTML = data[i].title;
         newBookTitle.classList.add('bookTitle');
         allBooksSection.append(newBookDiv);
-<<<<<<< HEAD
         newBookDiv.append(newBookTitle);
     } 
-=======
-    }
->>>>>>> 701d16e5a157cf93a05c37d99fbe7f64436ce6b1
 }
 getAllBooks();
 
