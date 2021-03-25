@@ -43,5 +43,13 @@ class CoreBookService {
         return currentBook;
     }
 
+    static async removeBook(currentBookId) {
+        let res = await fetch(`https://myapi-profstream.herokuapp.com/api/f97dfc/books/${currentBookId}`,
+            {
+                method: 'delete'
+            });
+        return res;
+    }
+
 
 }
