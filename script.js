@@ -10,26 +10,10 @@ const editButton = document.querySelector('.edit');
 const formSection = document.querySelector('.input-forms');
 const formInput = document.querySelector('#form-input');
 
-console.log(editButtonsSection);
-
-//CONSTANTS
-class CurrentBookInfo {
-    constructor(title, author, released) {
-        this.title = title,
-            this.author = author,
-            this.released = released
-    }
-}
-
-//VARIABLES
-let currentBook;
-
-
 
 //FUNCTIONS
 const getAllBooks = async () => {
     const data = await CoreBookService.getAllBooks();
-    console.log("loaded");
     for (let i = 0; i < data.length; i++) {
         // console.log(data[i]);
         const newBookDiv = document.createElement('div');
@@ -56,8 +40,7 @@ const getBookInfo = bookInfo => {
     let infoList = document.createElement('dl');
     infoList.classList.add('book-info');
     bookInfoSection.append(infoList);
-    currentBook = new CurrentBookInfo(bookInfo.title, bookInfo.author, bookInfo.release_date)
-    for (key in currentBook) {
+    for (key in bookInfo) {
         let listItemName = key.charAt(0).toUpperCase() + key.slice(1);
         let listItems = document.createElement('dt');
         let listDescription = document.createElement('dd');
