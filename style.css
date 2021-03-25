@@ -45,6 +45,42 @@ h1{
     color: purple;
 }
 
+.edit-buttons{
+    border: solid red;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+}
+.delete{
+    border: solid green;
+    padding: 5px;
+    width: 150px;
+    height: 30px;
+    
+    
+}
+.delete:hover{
+    cursor: pointer;
+    color: purple;
+}
+
+.edit{
+    border:solid green;
+    padding: 5px;
+    width: 150px;
+    height: 30px;
+    
+}
+
+.edit:hover{
+    cursor: pointer;
+    color: purple;
+}
+
+
 .viewing-area{
     border: solid green;
     display: flex;
