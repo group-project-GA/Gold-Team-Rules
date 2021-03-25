@@ -7,7 +7,8 @@ const directory = document.querySelector(".directory");
 const editButtonsSection = document.querySelector(".edit-buttons")
 const deleteButton = document.querySelector(".delete");
 const editButton = document.querySelector('.edit');
-
+const formSection = document.querySelector('.input-forms');
+const formInput = document.querySelector('#form-input');
 
 //CONSTANTS
 class CurrentBookInfo {
@@ -24,10 +25,7 @@ let currentBook;
 //FUNCTIONS
 // get index of books from api
 const getAllBooks = async () => {
-    let res = await fetch('https://myapi-profstream.herokuapp.com/api/f97dfc/books');
-    let data = await res.json();
-
-    // create new div elements for each book and assign them css classes
+    const data = await CoreBookService.getAllBooks();
     for (let i = 0; i < data.length; i++) {
         // new divs for each book
         const newBookDiv = document.createElement('div');
@@ -40,19 +38,14 @@ const getAllBooks = async () => {
         newBookTitle.id = data[i].id;
         allBooksSection.append(newBookDiv);
         newBookDiv.append(newBookTitle);
-    } 
+    }
 }
-getAllBooks();
 
-
-// get detailed info about a book
-const getBookInfo = async () => {
-    let res = await fetch(`https://myapi-profstream.herokuapp.com/api/f97dfc/books/${currentBookId}`);
-    let bookInfo = await res.json();
-    // hide index view and display detailed view
-    allBooksSection.classList.add('hide')
-    bookInfoSection.classList.remove('hide')
-    editButtonsSection.classList.remove("hide")
+const getBookInfo = bookInfo => {
+    allBooksSection.classList.add('hide');
+    formSection.classList.add('hide');
+    bookInfoSection.classList.remove('hide');
+    editButtonsSection.classList.remove("hide");
     directory.innerHTML = `Details for ${bookInfo.title}`
     // get book cover image and add to DOM
     let displayImage = document.createElement('img');
@@ -62,12 +55,7 @@ const getBookInfo = async () => {
     let infoList = document.createElement('dl');
     infoList.classList.add('book-info');
     bookInfoSection.append(infoList);
-
-    // new book object
-    currentBook = new CurrentBookInfo(bookInfo.title, bookInfo.author, bookInfo.release_date)
-    // display detailed info about the book
-    for (key in currentBook) {
-        // Create DOM elements for each book property
+    for (key in bookInfo) {
         let listItemName = key.charAt(0).toUpperCase() + key.slice(1);
         let listItems = document.createElement('dt');
         let listDescription = document.createElement('dd');
@@ -87,7 +75,9 @@ const getBookInfo = async () => {
     }
 }
 
-// delete all
+
+
+
 const removeAllChildren = (parent) => {
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
@@ -95,7 +85,7 @@ const removeAllChildren = (parent) => {
 }
 // delete single book
 const removeBook = async () => {
-    let res = await fetch(`https://myapi-profstream.herokuapp.com/api/f97dfc/books/${currentBookId}`,
+    let res = await fetch(`https://myapi-profstream.herokuapp.com/api/f97dfc/books/${bookId}`,
         {
             method: 'delete'
         });
@@ -105,12 +95,13 @@ const removeBook = async () => {
 
 
 //EVENT LISTENERS
-// display detailed view when a book is clicked
-allBooksSection.addEventListener("click", (book) => {
-    if(book.target.id){ 
-    currentBookId = book.target.id;
-    // console.log(currentBookId);
-    getBookInfo();
+window.addEventListener("load", getAllBooks);
+
+allBooksSection.addEventListener("click", async (e) => {
+    if(e.target.id){ 
+    const bookId = e.target.id;
+    const bookInfo = await CoreBookService.getBookInfo(bookId);
+    getBookInfo(bookInfo);
     }
 })
 
@@ -126,7 +117,33 @@ allBooksButton.addEventListener("click", () => {
 
 })
 
+createNewButton.addEventListener("click", () => {
+    removeAllChildren(bookInfoSection);
+    bookInfoSection.classList.add('hide');
+    allBooksSection.classList.remove('hide');
+    editButtonsSection.classList.add('hide');
+    directory.innerHTML = "Index of All Books";
+    formSection.classList.remove('hide');
+
+});
+
+
+formInput.addEventListener("submit", async () => {
+    e.preventDefault();
+    const form = e.target;
+    const title = form.title.value;
+    const author = form.author.value;
+    const releaseDate = form.releaseDate.value;
+    const image = form.image.value;
+    const newBoook = new BookInfo(1, title, author, releaseDate, image);
+    const createdBook = await CoreBookService.createNewBook(newBoook);
+    getBookInfo(createdBook);
+});
+
 deleteButton.addEventListener("click", () => {
     console.log('click');
-    removeBook()
+    removeBook();
 })
+
+
+
