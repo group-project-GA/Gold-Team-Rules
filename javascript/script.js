@@ -10,6 +10,9 @@ const editButton = document.querySelector('.edit');
 const formSection = document.querySelector('.input-forms');
 const formInput = document.querySelector('#form-input');
 
+//VARIABLES
+let currentBookId;
+
 //FUNCTIONS
 // get index of books from api
 const getAllBooks = async () => {
@@ -29,7 +32,10 @@ const getAllBooks = async () => {
     }
 }
 
+// display details of book
 const getBookInfo = bookInfo => {
+    // set current book id
+    currentBookId = bookInfo.id;
     allBooksSection.classList.add('hide');
     formSection.classList.add('hide');
     bookInfoSection.classList.remove('hide');
