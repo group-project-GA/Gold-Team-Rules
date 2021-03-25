@@ -69,6 +69,7 @@ const getBookInfo = bookInfo => {
             } else if (listItems.id === "author") {
                 listDescription.innerHTML = bookInfo.author;
             } else if (listItems.id === "release_date") {
+                listItems.innerHTML = 'Released:'
                 listDescription.innerHTML = bookInfo.release_date;
             }
         }
