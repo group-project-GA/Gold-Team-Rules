@@ -33,10 +33,14 @@ const getAllBooks = async () => {
     for (let i = 0; i < data.length; i++) {
         // console.log(data[i]);
         const newBookDiv = document.createElement('div');
+        const newBookTitle = document.createElement('div');
         newBookDiv.classList.add('book');
         newBookDiv.id = data[i].id;
-        newBookDiv.innerHTML = data[i].title;
+        // newBookDiv.innerHTML = data[i].title;
+        newBookTitle.innerHTML = data[i].title;
+        newBookTitle.classList.add('bookTitle');
         allBooksSection.append(newBookDiv);
+        newBookDiv.append(newBookTitle);
     } 
 }
 getAllBooks();
@@ -46,16 +50,10 @@ getAllBooks();
 const getBookInfo = async () => {
     let res = await fetch(`https://myapi-profstream.herokuapp.com/api/f97dfc/books/${currentBookId}`);
     let bookInfo = await res.json();
-<<<<<<< HEAD
     allBooksSection.classList.add('hide')
     bookInfoSection.classList.remove('hide')
     editButtonsSection.classList.remove("hide")
     directory.innerHTML = `Details for ${bookInfo.title}`
-=======
-    allBooksSection.classList.add('hide');
-    bookInfoSection.classList.remove('hide');
-    directory.innerHTML = `Details for ${bookInfo.title}`;
->>>>>>> deee825df1f4b8059d2a662f120db959761107a0
     let displayImage = document.createElement('img');
     displayImage.src = bookInfo.image;
     bookInfoSection.append(displayImage);
@@ -109,7 +107,6 @@ allBooksButton.addEventListener("click", () => {
     removeAllChildren(bookInfoSection);
     bookInfoSection.classList.add('hide');
     allBooksSection.classList.remove('hide');
-<<<<<<< HEAD
     editButtonsSection.classList.add('hide')
     directory.innerHTML = "Index of All Books"
     
@@ -122,7 +119,3 @@ deleteButton.addEventListener("click", ()=>{
 
 
 
-=======
-    directory.innerHTML = "Index of All Books";
-})
->>>>>>> deee825df1f4b8059d2a662f120db959761107a0
