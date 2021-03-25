@@ -134,4 +134,22 @@ dd{
     display: none;
 }
 
+.bookshelf {
+    background-image: url('./assets/images/bookshelf.png');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+}
 
+.bookOnShelf {
+    background: url('./assets/images/blue-book-on-shelf.png');
+    background-repeat: no-repeat;
+    height: 200px;
+    width: 100px;
+}
+
+.bookOnShelf:hover {
+    background: url('./assets/images/blue-book-off-shelf.png');
+    background-repeat: no-repeat;
+}
