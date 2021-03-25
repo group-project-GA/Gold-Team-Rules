@@ -33,11 +33,19 @@ const getAllBooks = async () => {
     for (let i = 0; i < data.length; i++) {
         // console.log(data[i]);
         const newBookDiv = document.createElement('div');
+        const newBookTitle = document.createElement('div');
         newBookDiv.classList.add('book');
         newBookDiv.id = data[i].id;
-        newBookDiv.innerHTML = data[i].title;
+        // newBookDiv.innerHTML = data[i].title;
+        newBookTitle.innerHTML = data[i].title;
+        newBookTitle.classList.add('bookTitle');
         allBooksSection.append(newBookDiv);
+<<<<<<< HEAD
+        newBookDiv.append(newBookTitle);
+    } 
+=======
     }
+>>>>>>> 701d16e5a157cf93a05c37d99fbe7f64436ce6b1
 }
 getAllBooks();
 
