@@ -78,17 +78,10 @@ const removeAllChildren = (parent) => {
 }
 
 //EVENT LISTENERS
-// allBooksSection.addEventListener("click", (book)=>{
-//     currentBookId = book.target.id;
-//     // console.log(currentBookId);
-//     getBookInfo()
-// })
-
-allBooksSection.addEventListener("click", () => {
-    // currentBookId = book.target.id;
+allBooksSection.addEventListener("click", (book) => {
+    currentBookId = book.target.id;
     // console.log(currentBookId);
-    const allBooks = CoreBookService.getAllBooks();
-    console.log(allBooks);
+    getBookInfo()
 })
 
 allBooksButton.addEventListener("click", () => {
