@@ -40,8 +40,12 @@ const getAllBooks = async () => {
         newBookTitle.innerHTML = data[i].title;
         newBookTitle.classList.add('bookTitle');
         allBooksSection.append(newBookDiv);
+<<<<<<< HEAD
         newBookDiv.append(newBookTitle);
     } 
+=======
+    }
+>>>>>>> 701d16e5a157cf93a05c37d99fbe7f64436ce6b1
 }
 getAllBooks();
 
@@ -76,7 +80,7 @@ const getBookInfo = async () => {
             listDescription.innerHTML = bookInfo.release_date;
         }
         listItems.append(listDescription);
-     }
+    }
 }
 
 
@@ -86,14 +90,14 @@ const removeAllChildren = (parent) => {
     }
 }
 
-const removeBook = async () =>{
+const removeBook = async () => {
     let res = await fetch(`https://myapi-profstream.herokuapp.com/api/f97dfc/books/${currentBookId}`,
-    {
-         method: 'delete'
+        {
+            method: 'delete'
         });
-        location.reload()
-        return res
-    }
+    location.reload()
+    return res
+}
 
 
 //EVENT LISTENERS
@@ -109,10 +113,10 @@ allBooksButton.addEventListener("click", () => {
     allBooksSection.classList.remove('hide');
     editButtonsSection.classList.add('hide')
     directory.innerHTML = "Index of All Books"
-    
+
 })
 
-deleteButton.addEventListener("click", ()=>{
+deleteButton.addEventListener("click", () => {
     console.log('click');
     removeBook()
 })
