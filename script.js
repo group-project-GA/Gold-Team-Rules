@@ -3,7 +3,7 @@
 const allBooksButton = document.querySelector("#all");
 const createNewButton = document.querySelector("#create");
 const allBooksSection = document.querySelector("#books");
-const bookInfoSection = document.querySelector(".current-book")
+const bookInfoSection = document.querySelector(".current-book");
 const directory = document.querySelector("#directory");
 const editButtonsSection = document.querySelector(".edit-buttons")
 const deleteButton = document.querySelector(".delete");
@@ -13,43 +13,49 @@ const editButton = document.querySelector('.edit');
 console.log(editButtonsSection);
 
 //CONSTANTS
-class CurrentBookInfo{
-    constructor(title, author, released){
+class CurrentBookInfo {
+    constructor(title, author, released) {
         this.title = title,
-        this.author = author,
-        this.released = released
+            this.author = author,
+            this.released = released
     }
 }
 
 //VARIABLES
-let currentBook
+let currentBook;
 
 
 
 //FUNCTIONS
-const getAllBooks = async () =>{
+const getAllBooks = async () => {
     let res = await fetch('https://myapi-profstream.herokuapp.com/api/f97dfc/books');
     let data = await res.json();
-    for(let i = 0; i < data.length; i++){
+    for (let i = 0; i < data.length; i++) {
         // console.log(data[i]);
         const newBookDiv = document.createElement('div');
         newBookDiv.classList.add('book');
-        newBookDiv.id = data[i].id
+        newBookDiv.id = data[i].id;
         newBookDiv.innerHTML = data[i].title;
-        allBooksSection.append(newBookDiv)
+        allBooksSection.append(newBookDiv);
     } 
 }
 getAllBooks();
 
 
 
-const getBookInfo = async () =>{
+const getBookInfo = async () => {
     let res = await fetch(`https://myapi-profstream.herokuapp.com/api/f97dfc/books/${currentBookId}`);
     let bookInfo = await res.json();
+<<<<<<< HEAD
     allBooksSection.classList.add('hide')
     bookInfoSection.classList.remove('hide')
     editButtonsSection.classList.remove("hide")
     directory.innerHTML = `Details for ${bookInfo.title}`
+=======
+    allBooksSection.classList.add('hide');
+    bookInfoSection.classList.remove('hide');
+    directory.innerHTML = `Details for ${bookInfo.title}`;
+>>>>>>> deee825df1f4b8059d2a662f120db959761107a0
     let displayImage = document.createElement('img');
     displayImage.src = bookInfo.image;
     bookInfoSection.append(displayImage);
@@ -57,30 +63,30 @@ const getBookInfo = async () =>{
     infoList.classList.add('book-info');
     bookInfoSection.append(infoList);
     currentBook = new CurrentBookInfo(bookInfo.title, bookInfo.author, bookInfo.release_date)
-    for(key in currentBook){
+    for (key in currentBook) {
         let listItemName = key.charAt(0).toUpperCase() + key.slice(1);
         let listItems = document.createElement('dt');
-        let listDescription = document.createElement('dd')
-        listItems.id = key
+        let listDescription = document.createElement('dd');
+        listItems.id = key;
         listItems.innerHTML = `${listItemName}:`;
         infoList.append(listItems);
-        if(listItems.id === "title"){
+        if (listItems.id === "title") {
             listDescription.innerHTML = bookInfo.title;
-        }else if(listItems.id === "author"){
+        } else if (listItems.id === "author") {
             listDescription.innerHTML = bookInfo.author;
-        }else if(listItems.id === "released"){
+        } else if (listItems.id === "released") {
             listDescription.innerHTML = bookInfo.release_date;
         }
-        listItems.append(listDescription)     
+        listItems.append(listDescription);
      }
-    }
+}
 
 
-const removeAllChildren = (parent)=>{
-    while (parent.firstChild){
+const removeAllChildren = (parent) => {
+    while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
-        }
     }
+}
 
 const removeBook = async () =>{
     let res = await fetch(`https://myapi-profstream.herokuapp.com/api/f97dfc/books/${currentBookId}`,
@@ -93,16 +99,17 @@ const removeBook = async () =>{
 
 
 //EVENT LISTENERS
-allBooksSection.addEventListener("click", (book)=>{
+allBooksSection.addEventListener("click", (book) => {
     currentBookId = book.target.id;
     // console.log(currentBookId);
-    getBookInfo()
+    getBookInfo();
 })
 
-allBooksButton.addEventListener("click", ()=>{
+allBooksButton.addEventListener("click", () => {
     removeAllChildren(bookInfoSection);
     bookInfoSection.classList.add('hide');
     allBooksSection.classList.remove('hide');
+<<<<<<< HEAD
     editButtonsSection.classList.add('hide')
     directory.innerHTML = "Index of All Books"
     
@@ -115,3 +122,7 @@ deleteButton.addEventListener("click", ()=>{
 
 
 
+=======
+    directory.innerHTML = "Index of All Books";
+})
+>>>>>>> deee825df1f4b8059d2a662f120db959761107a0
