@@ -37,7 +37,7 @@ const getAllBooks = async () => {
         newBookDiv.id = data[i].id;
         newBookDiv.innerHTML = data[i].title;
         allBooksSection.append(newBookDiv);
-    } 
+    }
 }
 getAllBooks();
 
@@ -46,16 +46,10 @@ getAllBooks();
 const getBookInfo = async () => {
     let res = await fetch(`https://myapi-profstream.herokuapp.com/api/f97dfc/books/${currentBookId}`);
     let bookInfo = await res.json();
-<<<<<<< HEAD
     allBooksSection.classList.add('hide')
     bookInfoSection.classList.remove('hide')
     editButtonsSection.classList.remove("hide")
     directory.innerHTML = `Details for ${bookInfo.title}`
-=======
-    allBooksSection.classList.add('hide');
-    bookInfoSection.classList.remove('hide');
-    directory.innerHTML = `Details for ${bookInfo.title}`;
->>>>>>> deee825df1f4b8059d2a662f120db959761107a0
     let displayImage = document.createElement('img');
     displayImage.src = bookInfo.image;
     bookInfoSection.append(displayImage);
@@ -78,7 +72,7 @@ const getBookInfo = async () => {
             listDescription.innerHTML = bookInfo.release_date;
         }
         listItems.append(listDescription);
-     }
+    }
 }
 
 
@@ -88,14 +82,14 @@ const removeAllChildren = (parent) => {
     }
 }
 
-const removeBook = async () =>{
+const removeBook = async () => {
     let res = await fetch(`https://myapi-profstream.herokuapp.com/api/f97dfc/books/${currentBookId}`,
-    {
-         method: 'delete'
+        {
+            method: 'delete'
         });
-        location.reload()
-        return res
-    }
+    location.reload()
+    return res
+}
 
 
 //EVENT LISTENERS
@@ -109,20 +103,15 @@ allBooksButton.addEventListener("click", () => {
     removeAllChildren(bookInfoSection);
     bookInfoSection.classList.add('hide');
     allBooksSection.classList.remove('hide');
-<<<<<<< HEAD
     editButtonsSection.classList.add('hide')
     directory.innerHTML = "Index of All Books"
-    
+
 })
 
-deleteButton.addEventListener("click", ()=>{
+deleteButton.addEventListener("click", () => {
     console.log('click');
     removeBook()
 })
 
 
 
-=======
-    directory.innerHTML = "Index of All Books";
-})
->>>>>>> deee825df1f4b8059d2a662f120db959761107a0

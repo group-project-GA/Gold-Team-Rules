@@ -1,11 +1,11 @@
 const API_URL = 'https://myapi-profstream.herokuapp.com/api/f97dfc';
 
 class BookInfo {
-    constructor(id, title, author, releaseDate, image) {
+    constructor(id, title, author, release_date, image) {
         this.id = id;
         this.title = title,
             this.author = author,
-            this.releaseDate = releaseDate,
+            this.release_date = release_date,
             this.image = image
     }
 }
@@ -21,7 +21,8 @@ class CoreBookService {
 
         });
         const data = await res.json();
-        console.log(data);
+        const newBook = new BookInfo(data.id, data.title, data.author, data.release_date, data.image);
+        return newBook;
     }
 
     static async getAllBooks() {
@@ -36,7 +37,7 @@ class CoreBookService {
         return allBooks;
     }
 
-    async getBookInfo(bookId) {
+    static async getBookInfo(bookId) {
         let res = await fetch(`${API_URL}/books/${bookId}`);
         let bookInfo = await res.json();
         currentBook = new BookInfo(bookInfo.id, bookInfo.title, bookInfo.author, bookInfo.release_date, bookInfo.image)
