@@ -20,10 +20,6 @@ const getAllBooks = async () => {
         const newBookTitle = document.createElement('div');
         newBookDiv.classList.add('book');
         newBookTitle.id = data[i].id;
-<<<<<<< HEAD
-=======
-        newBookDiv.id = data[i].id;
->>>>>>> 7608b943feff97ab896d927243c2e3f8230b131c
         // set book title
         newBookTitle.innerHTML = data[i].title;
         newBookTitle.classList.add('bookTitle');
@@ -116,12 +112,8 @@ createNewButton.addEventListener("click", () => {
 
 });
 
-<<<<<<< HEAD
-formInput.addEventListener("submit", async () => {
-=======
 
 formInput.addEventListener("submit", async (e) => {
->>>>>>> 7608b943feff97ab896d927243c2e3f8230b131c
     e.preventDefault();
     const form = e.target;
     const title = form.title.value;
@@ -137,13 +129,9 @@ formInput.addEventListener("submit", async (e) => {
 deleteButton.addEventListener("click", () => {
     console.log('click');
     removeBook();
-<<<<<<< HEAD
-})
-=======
 })
 
 window.addEventListener("load", getAllBooks);
 
 
 
->>>>>>> 7608b943feff97ab896d927243c2e3f8230b131c
