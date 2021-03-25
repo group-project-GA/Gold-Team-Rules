@@ -46,16 +46,10 @@ getAllBooks();
 const getBookInfo = async () => {
     let res = await fetch(`https://myapi-profstream.herokuapp.com/api/f97dfc/books/${currentBookId}`);
     let bookInfo = await res.json();
-<<<<<<< HEAD
     allBooksSection.classList.add('hide')
     bookInfoSection.classList.remove('hide')
     editButtonsSection.classList.remove("hide")
     directory.innerHTML = `Details for ${bookInfo.title}`
-=======
-    allBooksSection.classList.add('hide');
-    bookInfoSection.classList.remove('hide');
-    directory.innerHTML = `Details for ${bookInfo.title}`;
->>>>>>> deee825df1f4b8059d2a662f120db959761107a0
     let displayImage = document.createElement('img');
     displayImage.src = bookInfo.image;
     bookInfoSection.append(displayImage);
