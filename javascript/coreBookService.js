@@ -1,11 +1,11 @@
 const API_URL = 'https://myapi-profstream.herokuapp.com/api/f97dfc';
 
 class BookInfo {
-    constructor(id, title, author, release_date, image) {
+    constructor(id, title, author, released, image) {
         this.id = id;
         this.title = title,
             this.author = author,
-            this.release_date = release_date,
+            this.released = released,
             this.image = image
     }
 }
@@ -33,6 +33,7 @@ class CoreBookService {
             let newBook = new BookInfo(data[i].id, data[i].title, data[i].author, data[i].release_date, data[i].image);
             allBooks.push(newBook);
         }
+        console.log(allBooks);
         return allBooks;
     }
 
