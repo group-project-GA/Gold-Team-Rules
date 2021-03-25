@@ -98,25 +98,35 @@ h1{
 #books{
     background: url('./assets/images/bookshelf.png');
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: contain;
+    background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
     border: solid blue;
-    padding: 10px;
     text-align: center;
     width: 100%;
     margin: 60px 0 0 0;
 }
 
 .book{
+    height: 150px;
+    width: 40px;
     display: flex;
     background: url('./assets/images/blue-book-on-shelf.png');
     background-size: contain;
     background-repeat: no-repeat;
+<<<<<<< HEAD:style.css
+    background-position: center;
+    margin: 0 0 50px 0;
+=======
     height: 170px;
     width: 50px;
+>>>>>>> dc3a3233b32f70f36253133639745e6198393413:css/style.css
     border: 1px solid red;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
 }
 .book:hover{
     cursor: pointer;
@@ -126,9 +136,11 @@ h1{
 }
 
 .bookTitle {
-    transform: rotate(90deg);
-    font-size: 20px;
+    width:120px;
+    display: inline-table;
+    transform: rotate(270deg);
     border: 1px solid green;
+    
 }
 
 .current-book{

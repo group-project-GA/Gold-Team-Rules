@@ -10,6 +10,17 @@ const editButton = document.querySelector('.edit');
 const formSection = document.querySelector('.input-forms');
 const formInput = document.querySelector('#form-input');
 
+//CONSTANTS
+class CurrentBookInfo {
+    constructor(title, author, released) {
+        this.title = title,
+            this.author = author,
+            this.released = released
+    }
+}
+
+//VARIABLES
+let currentBook;
 
 //FUNCTIONS
 // get index of books from api
@@ -20,6 +31,7 @@ const getAllBooks = async () => {
         const newBookDiv = document.createElement('div');
         const newBookTitle = document.createElement('div');
         newBookDiv.classList.add('book');
+        newBookTitle.id = data[i].id;
         newBookDiv.id = data[i].id;
         // set book title
         newBookTitle.innerHTML = data[i].title;
@@ -84,7 +96,6 @@ const removeBook = async () => {
 
 
 //EVENT LISTENERS
-
 window.addEventListener("load", getAllBooks);
 
 allBooksSection.addEventListener("click", async (e) => {
