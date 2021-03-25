@@ -89,7 +89,7 @@ h1{
     align-items: center;
     padding: 10px;
 }
-#directory{
+.directory{
     border: solid blue;
     padding: 5px;
     margin:5px;

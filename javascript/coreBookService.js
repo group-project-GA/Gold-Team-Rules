@@ -33,6 +33,7 @@ class CoreBookService {
             let newBook = new BookInfo(data[i].id, data[i].title, data[i].author, data[i].release_date, data[i].image);
             allBooks.push(newBook);
         }
+        console.log(allBooks);
         return allBooks;
     }
 
