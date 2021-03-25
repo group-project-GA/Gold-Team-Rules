@@ -10,7 +10,6 @@ const editButton = document.querySelector('.edit');
 const formSection = document.querySelector('.input-forms');
 const formInput = document.querySelector('#form-input');
 
-
 //FUNCTIONS
 // get index of books from api
 const getAllBooks = async () => {
@@ -21,6 +20,10 @@ const getAllBooks = async () => {
         const newBookTitle = document.createElement('div');
         newBookDiv.classList.add('book');
         newBookTitle.id = data[i].id;
+<<<<<<< HEAD
+=======
+        newBookDiv.id = data[i].id;
+>>>>>>> 7608b943feff97ab896d927243c2e3f8230b131c
         // set book title
         newBookTitle.innerHTML = data[i].title;
         newBookTitle.classList.add('bookTitle');
@@ -82,8 +85,6 @@ const removeBook = async () => {
 
 //EVENT LISTENERS
 
-window.addEventListener("load", getAllBooks);
-
 allBooksSection.addEventListener("click", async (e) => {
     if (e.target.id)
     {
@@ -115,7 +116,12 @@ createNewButton.addEventListener("click", () => {
 
 });
 
+<<<<<<< HEAD
 formInput.addEventListener("submit", async () => {
+=======
+
+formInput.addEventListener("submit", async (e) => {
+>>>>>>> 7608b943feff97ab896d927243c2e3f8230b131c
     e.preventDefault();
     const form = e.target;
     const title = form.title.value;
@@ -124,10 +130,20 @@ formInput.addEventListener("submit", async () => {
     const image = form.image.value;
     const newBoook = new BookInfo(1, title, author, releaseDate, image);
     const createdBook = await CoreBookService.createNewBook(newBoook);
+    console.log(createdBook);
     getBookInfo(createdBook);
 });
 
 deleteButton.addEventListener("click", () => {
     console.log('click');
     removeBook();
+<<<<<<< HEAD
 })
+=======
+})
+
+window.addEventListener("load", getAllBooks);
+
+
+
+>>>>>>> 7608b943feff97ab896d927243c2e3f8230b131c
