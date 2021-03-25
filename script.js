@@ -5,8 +5,12 @@ const createNewButton = document.querySelector("#create");
 const allBooksSection = document.querySelector("#books");
 const bookInfoSection = document.querySelector(".current-book")
 const directory = document.querySelector("#directory");
+const editButtonsSection = document.querySelector(".edit-buttons")
+const deleteButton = document.querySelector(".delete");
+const editButton = document.querySelector('.edit');
 
 
+console.log(editButtonsSection);
 
 //CONSTANTS
 class CurrentBookInfo{
@@ -44,6 +48,7 @@ const getBookInfo = async () =>{
     let bookInfo = await res.json();
     allBooksSection.classList.add('hide')
     bookInfoSection.classList.remove('hide')
+    editButtonsSection.classList.remove("hide")
     directory.innerHTML = `Details for ${bookInfo.title}`
     let displayImage = document.createElement('img');
     displayImage.src = bookInfo.image;
@@ -77,6 +82,16 @@ const removeAllChildren = (parent)=>{
         }
     }
 
+const removeBook = async () =>{
+    let res = await fetch(`https://myapi-profstream.herokuapp.com/api/f97dfc/books/${currentBookId}`,
+    {
+         method: 'delete'
+        });
+        location.reload()
+        return res
+    }
+
+
 //EVENT LISTENERS
 allBooksSection.addEventListener("click", (book)=>{
     currentBookId = book.target.id;
@@ -88,8 +103,15 @@ allBooksButton.addEventListener("click", ()=>{
     removeAllChildren(bookInfoSection);
     bookInfoSection.classList.add('hide');
     allBooksSection.classList.remove('hide');
+    editButtonsSection.classList.add('hide')
     directory.innerHTML = "Index of All Books"
     
 })
+
+deleteButton.addEventListener("click", ()=>{
+    console.log('click');
+    removeBook()
+})
+
 
 
