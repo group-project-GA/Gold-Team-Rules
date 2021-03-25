@@ -10,18 +10,6 @@ const editButton = document.querySelector('.edit');
 const formSection = document.querySelector('.input-forms');
 const formInput = document.querySelector('#form-input');
 
-//CONSTANTS
-class CurrentBookInfo {
-    constructor(title, author, released) {
-        this.title = title,
-            this.author = author,
-            this.released = released
-    }
-}
-
-//VARIABLES
-let currentBook;
-
 //FUNCTIONS
 // get index of books from api
 const getAllBooks = async () => {
@@ -96,7 +84,6 @@ const removeBook = async () => {
 
 
 //EVENT LISTENERS
-window.addEventListener("load", getAllBooks);
 
 allBooksSection.addEventListener("click", async (e) => {
     const bookId = e.target.id;
@@ -127,7 +114,7 @@ createNewButton.addEventListener("click", () => {
 });
 
 
-formInput.addEventListener("submit", async () => {
+formInput.addEventListener("submit", async (e) => {
     e.preventDefault();
     const form = e.target;
     const title = form.title.value;
@@ -136,6 +123,7 @@ formInput.addEventListener("submit", async () => {
     const image = form.image.value;
     const newBoook = new BookInfo(1, title, author, releaseDate, image);
     const createdBook = await CoreBookService.createNewBook(newBoook);
+    console.log(createdBook);
     getBookInfo(createdBook);
 });
 
@@ -143,6 +131,8 @@ deleteButton.addEventListener("click", () => {
     console.log('click');
     removeBook();
 })
+
+window.addEventListener("load", getAllBooks);
 
 
 
