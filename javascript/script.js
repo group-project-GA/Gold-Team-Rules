@@ -1,9 +1,9 @@
 //HTML elements
 const allBooksButton = document.querySelector("#all");
 const createNewButton = document.querySelector("#create");
-const allBooksSection = document.querySelector("#books");
+const allBooksSection = document.querySelector(".books");
 const bookInfoSection = document.querySelector(".current-book");
-const directory = document.querySelector("#directory");
+const directory = document.querySelector(".directory");
 const editButtonsSection = document.querySelector(".edit-buttons")
 const deleteButton = document.querySelector(".delete");
 const editButton = document.querySelector('.edit');
@@ -20,7 +20,6 @@ const getAllBooks = async () => {
         const newBookTitle = document.createElement('div');
         newBookDiv.classList.add('book');
         newBookTitle.id = data[i].id;
-        newBookDiv.id = data[i].id;
         // set book title
         newBookTitle.innerHTML = data[i].title;
         newBookTitle.classList.add('bookTitle');
@@ -83,9 +82,12 @@ const removeBook = async () => {
 //EVENT LISTENERS
 
 allBooksSection.addEventListener("click", async (e) => {
-    const bookId = e.target.id;
-    const bookInfo = await CoreBookService.getBookInfo(bookId);
-    getBookInfo(bookInfo);
+    if (e.target.id)
+    {
+        const bookId = e.target.id;
+        const bookInfo = await CoreBookService.getBookInfo(bookId);
+        getBookInfo(bookInfo);
+    }
 })
 
 // display index view when 'All Books' is clicked
@@ -110,7 +112,6 @@ createNewButton.addEventListener("click", () => {
 
 });
 
-
 formInput.addEventListener("submit", async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -130,6 +131,3 @@ deleteButton.addEventListener("click", () => {
 })
 
 window.addEventListener("load", getAllBooks);
-
-
-

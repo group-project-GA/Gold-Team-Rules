@@ -89,14 +89,14 @@ h1{
     align-items: center;
     padding: 10px;
 }
-#directory{
+.directory{
     border: solid blue;
     padding: 5px;
     margin:5px;
 }
 
-#books{
-    background: url('./assets/images/bookshelf.png');
+.books{
+    background: url('../assets/images/bookshelf.png');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -113,16 +113,12 @@ h1{
     height: 150px;
     width: 40px;
     display: flex;
-    background: url('./assets/images/blue-book-on-shelf.png');
+    background: url('../assets/images/blue-book-on-shelf.png');
     background-size: contain;
     background-repeat: no-repeat;
-<<<<<<< HEAD:style.css
     background-position: center;
     margin: 0 0 50px 0;
-=======
-    height: 170px;
-    width: 50px;
->>>>>>> dc3a3233b32f70f36253133639745e6198393413:css/style.css
+
     border: 1px solid red;
     justify-content: center;
     align-items: center;
@@ -130,7 +126,7 @@ h1{
 }
 .book:hover{
     cursor: pointer;
-    background: url('./assets/images/blue-book-off-shelf.png');
+    background: url('../assets/images/blue-book-off-shelf.png');
     background-size: contain;
     background-repeat: no-repeat;
 }
