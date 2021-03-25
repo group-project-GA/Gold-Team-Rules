@@ -112,7 +112,6 @@ createNewButton.addEventListener("click", () => {
 
 });
 
-
 formInput.addEventListener("submit", async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -132,6 +131,3 @@ deleteButton.addEventListener("click", () => {
 })
 
 window.addEventListener("load", getAllBooks);
-
-
-
