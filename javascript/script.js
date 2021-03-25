@@ -12,17 +12,19 @@ const formInput = document.querySelector('#form-input');
 
 
 //FUNCTIONS
+// get index of books from api
 const getAllBooks = async () => {
     const data = await CoreBookService.getAllBooks();
     for (let i = 0; i < data.length; i++) {
-        // console.log(data[i]);
+        // new divs for each book
         const newBookDiv = document.createElement('div');
         const newBookTitle = document.createElement('div');
         newBookDiv.classList.add('book');
         newBookDiv.id = data[i].id;
-        // newBookDiv.innerHTML = data[i].title;
+        // set book title
         newBookTitle.innerHTML = data[i].title;
         newBookTitle.classList.add('bookTitle');
+        // add to DOM
         allBooksSection.append(newBookDiv);
         newBookDiv.append(newBookTitle);
     }
@@ -34,9 +36,11 @@ const getBookInfo = bookInfo => {
     bookInfoSection.classList.remove('hide');
     editButtonsSection.classList.remove("hide");
     directory.innerHTML = `Details for ${bookInfo.title}`
+    // get book cover image and add to DOM
     let displayImage = document.createElement('img');
     displayImage.src = bookInfo.image;
     bookInfoSection.append(displayImage);
+    // get book info and add to DOM
     let infoList = document.createElement('dl');
     infoList.classList.add('book-info');
     bookInfoSection.append(infoList);
@@ -44,9 +48,11 @@ const getBookInfo = bookInfo => {
         let listItemName = key.charAt(0).toUpperCase() + key.slice(1);
         let listItems = document.createElement('dt');
         let listDescription = document.createElement('dd');
+        // set elements IDs to the property key
         listItems.id = key;
         listItems.innerHTML = `${listItemName}:`;
         infoList.append(listItems);
+        // display books info
         if (listItems.id === "title") {
             listDescription.innerHTML = bookInfo.title;
         } else if (listItems.id === "author") {
@@ -66,7 +72,7 @@ const removeAllChildren = (parent) => {
         parent.removeChild(parent.firstChild);
     }
 }
-
+// delete single book
 const removeBook = async () => {
     let res = await fetch(`https://myapi-profstream.herokuapp.com/api/f97dfc/books/${currentBookId}`,
         {
@@ -87,9 +93,12 @@ allBooksSection.addEventListener("click", async (e) => {
     getBookInfo(bookInfo);
 })
 
+// display index view when 'All Books' is clicked
 allBooksButton.addEventListener("click", () => {
+    // clear details of book
     removeAllChildren(bookInfoSection);
     bookInfoSection.classList.add('hide');
+    // display all books
     allBooksSection.classList.remove('hide');
     editButtonsSection.classList.add('hide')
     directory.innerHTML = "Index of All Books"
