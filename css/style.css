@@ -95,7 +95,7 @@ h1{
     margin:5px;
 }
 
-#books{
+.books{
     background: url('./images/bookshelf.png');
     background-repeat: no-repeat;
     background-size: contain;

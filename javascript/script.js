@@ -1,9 +1,9 @@
 //HTML elements
 const allBooksButton = document.querySelector("#all");
 const createNewButton = document.querySelector("#create");
-const allBooksSection = document.querySelector("#books");
+const allBooksSection = document.querySelector(".books");
 const bookInfoSection = document.querySelector(".current-book");
-const directory = document.querySelector("#directory");
+const directory = document.querySelector(".directory");
 const editButtonsSection = document.querySelector(".edit-buttons")
 const deleteButton = document.querySelector(".delete");
 const editButton = document.querySelector('.edit');
