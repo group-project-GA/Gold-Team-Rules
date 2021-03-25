@@ -10,6 +10,12 @@ const editButton = document.querySelector('.edit');
 const formSection = document.querySelector('.input-forms');
 const formInput = document.querySelector('#form-input');
 
+//VARIABLES
+let currentBookId;
+
+//CONSTANTS
+const BOOK_COLORS = ['blueBook', 'greenBook', 'purpleBook', 'redBook', 'yellowBook'];
+
 //FUNCTIONS
 // get index of books from api
 const getAllBooks = async () => {
@@ -21,6 +27,12 @@ const getAllBooks = async () => {
         newBookDiv.classList.add('book');
         // newBookDiv.id = data[i].id;
         // newBookDiv.innerHTML = data[i].title;
+        
+        // add random color class
+        newBookDiv.classList.add(BOOK_COLORS[Math.floor(Math.random() * BOOK_COLORS.length)]);
+        // newBookDiv.classList.add('book');
+        newBookTitle.id = data[i].id;
+        // set book title
         newBookTitle.innerHTML = data[i].title;
         newBookTitle.classList.add('bookTitle');
         newBookTitle.id = data[i].id;
@@ -29,7 +41,10 @@ const getAllBooks = async () => {
     }
 }
 
+// display details of book
 const getBookInfo = bookInfo => {
+    // set current book id
+    currentBookId = bookInfo.id;
     allBooksSection.classList.add('hide');
     formSection.classList.add('hide');
     bookInfoSection.classList.remove('hide');

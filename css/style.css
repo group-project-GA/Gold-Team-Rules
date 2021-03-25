@@ -109,7 +109,7 @@ h1{
     margin: 60px 0 0 0;
 }
 
-.book{
+.blueBook, .greenBook, .purpleBook, .redBook, .yellowBook {
     height: 150px;
     width: 40px;
     display: flex;
@@ -123,11 +123,47 @@ h1{
     align-items: center;
     padding: 10px;
 }
-.book:hover{
+.blueBook:hover, .greenBook:hover, .purpleBook:hover, .redBook:hover, .yellowBook:hover{
     cursor: pointer;
     background: url("./images/blue-book-off-shelf.png");
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+.blueBook {
+    background-image: url('../assets/images/blue-book-on-shelf.png');
+}
+
+.blueBook:hover {
+    background-image: url('../assets/images/blue-book-off-shelf.png');
+}
+.greenBook {
+    background-image: url('../assets/images/green-book-on-shelf.png');
+}
+
+.greenBook:hover {
+    background-image: url('../assets/images/green-book-off-shelf.png');
+}
+.purpleBook {
+    background-image: url('../assets/images/purple-book-on-shelf.png');
+}
+
+.purpleBook:hover {
+    background-image: url('../assets/images/purple-book-off-shelf.png');
+}
+.redBook {
+    background-image: url('../assets/images/red-book-on-shelf.png');
+}
+
+.redBook:hover {
+    background-image: url('../assets/images/red-book-off-shelf.png');
+}
+.yellowBook {
+    background-image: url('../assets/images/yellow-book-on-shelf.png');
+}
+
+.yellowBook:hover {
+    background-image: url('../assets/images/yellow-book-off-shelf.png');
 }
 
 .bookTitle {
