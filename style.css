@@ -1,0 +1,101 @@
+h1{
+    text-align: center;
+}
+.container{
+    border: solid black;
+    display: flex;
+    flex-direction: column;
+    padding:10px;
+    
+    
+}
+.book-buttons{
+    border: solid red;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+}
+
+#all{
+    border: solid green;
+    padding: 5px;
+    width: 150px;
+    height: 30px;
+    
+    
+}
+#all:hover{
+    cursor: pointer;
+    color: purple;
+}
+
+#create{
+    border:solid green;
+    padding: 5px;
+    width: 150px;
+    height: 30px;
+    
+}
+
+#create:hover{
+    cursor: pointer;
+    color: purple;
+}
+
+.viewing-area{
+    border: solid green;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+#directory{
+    border: solid blue;
+    padding: 5px;
+    margin:5px;
+}
+
+#books{
+    border: solid blue;
+    padding: 10px;
+    text-align: center;
+}
+
+.book{
+    padding: 5px;
+}
+.book:hover{
+    cursor: pointer;
+    color: purple;
+}
+
+.current-book{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    
+}
+
+img{
+    max-width: 200px;
+    max-height: 300px;
+    padding: 10px;
+}
+
+dt{
+    padding: 10px;
+    font-weight: bold;
+}
+dd{
+    font-weight: normal;
+}
+.hide{
+    display: none;
+}
+
+
