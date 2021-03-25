@@ -1,4 +1,3 @@
-
 //HTML elements
 const allBooksButton = document.querySelector("#all");
 const createNewButton = document.querySelector("#create");
@@ -8,7 +7,8 @@ const directory = document.querySelector("#directory");
 const editButtonsSection = document.querySelector(".edit-buttons")
 const deleteButton = document.querySelector(".delete");
 const editButton = document.querySelector('.edit');
-
+const formSection = document.querySelector('.input-forms');
+const formInput = document.querySelector('#form-input');
 
 console.log(editButtonsSection);
 
@@ -75,6 +75,18 @@ const getBookInfo = async () => {
     }
 }
 
+const createNewBook = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const title = form.title.value;
+    const author = form.author.value;
+    const releaseDate = form.releaseDate.value;
+    const image = form.image.value;
+    const newBoook = new BookInfo(1, title, author, releaseDate, image);
+    const createdBook = await CoreBookService.createNewBook(newBoook);
+    console.log(createdBook);
+}
+
 
 const removeAllChildren = (parent) => {
     while (parent.firstChild) {
@@ -107,6 +119,19 @@ allBooksButton.addEventListener("click", () => {
     directory.innerHTML = "Index of All Books"
 
 })
+
+createNewButton.addEventListener("click", () => {
+    removeAllChildren(bookInfoSection);
+    bookInfoSection.classList.add('hide');
+    allBooksSection.classList.remove('hide');
+    editButtonsSection.classList.add('hide');
+    directory.innerHTML = "Index of All Books";
+    formSection.classList.remove('hide');
+
+});
+
+
+formInput.addEventListener("submit", createNewBook);
 
 deleteButton.addEventListener("click", () => {
     console.log('click');
