@@ -242,3 +242,7 @@ form{
     font-family: 'PT Sans Narrow';
     color: rgba(255,106,92,1);
 }
+.message {
+    text-align: center;
+    color: red;
+}

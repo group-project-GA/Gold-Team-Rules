@@ -17,6 +17,7 @@ let editing = false;
 
 //CONSTANTS
 const BOOK_COLORS = ['blueBook', 'greenBook', 'orangeBook', 'redBook', 'yellowBook'];
+const CREATE_BOOK_FIELDS = ['title', 'author', 'releaseDate', 'image'];
 
 //FUNCTIONS
 // get index of books from api
@@ -100,6 +101,26 @@ const removeBook = async () => {
     return res
 }
 
+const clearFieldsErrorMessage = (fields) => {
+    let i, l = fields.length;
+    let fieldName, messageDiv;
+    for (i = 0; i < l; i++) {
+        fieldName = fields[i];
+        messageDiv = document.querySelector(`#${fieldName} + .message`);
+        messageDiv.innerHTML = "";
+    }
+
+}
+
+const displayValidations = (validations) => {
+    clearFieldsErrorMessage(CREATE_BOOK_FIELDS);
+    validations.map(validation => {
+        const fieldName = Object.keys(validation)[0];
+        const messageDiv = document.querySelector(`#${fieldName} + .message`);
+        messageDiv.innerHTML = validation[fieldName]["message"];
+    });
+}
+
 
 //EVENT LISTENERS
 // click on a book
@@ -151,21 +172,26 @@ formInput.addEventListener("submit", async (e) => {
     e.preventDefault();
     let createdBook;
     const form = e.target;
-    const title = form.title.value;
-    const author = form.author.value;
-    const releaseDate = form.releaseDate.value;
-    const image = form.image.value;
-    const newBoook = new BookInfo(1, title, author, releaseDate, image);
-    // check if editing a book instead of creating
-    if (editing)
-    {
-        createdBook = await CoreBookService.editBookInfo(currentBookId, newBoook);
+    const [isValid, results] = validateForm(form, CREATE_BOOK_FIELDS);
+    if (!isValid) {
+        displayValidations(results);
     }
-    else
-    {
-        createdBook = await CoreBookService.createNewBook(newBoook);
+    else {
+        clearFieldsErrorMessage(CREATE_BOOK_FIELDS);
+        const title = form.title.value;
+        const author = form.author.value;
+        const releaseDate = form.releaseDate.value;
+        const image = form.image.value;
+        const newBoook = new BookInfo(1, title, author, releaseDate, image);
+        // check if editing a book instead of creating
+        if (editing) {
+            createdBook = await CoreBookService.editBookInfo(currentBookId, newBoook);
+        }
+        else {
+            createdBook = await CoreBookService.createNewBook(newBoook);
+        }
+        getBookInfo(createdBook);
     }
-    getBookInfo(createdBook);
 });
 
 // delete book
@@ -174,8 +200,7 @@ deleteButton.addEventListener("click", () => {
 })
 
 // edit book
-editButton.addEventListener('click', async () =>
-{
+editButton.addEventListener('click', async () => {
     // editing
     editing = true;
     // clear details
