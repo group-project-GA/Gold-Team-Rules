@@ -149,13 +149,13 @@ allBooksButton.addEventListener("click", () => {
 })
 // create a new book button
 createNewButton.addEventListener("click", () => {
-    // not editing
-    editing = false;
     // clear input forms
     document.querySelector('#title').value = '';
     document.querySelector('#author').value = '';
     document.querySelector('#releaseDate').value = '';
     document.querySelector('#image').value = '';
+    // not editing
+    editing = false;
     // remove details
     removeAllChildren(bookInfoSection);
     // hide all areas and display input forms
@@ -164,7 +164,6 @@ createNewButton.addEventListener("click", () => {
     editButtonsSection.classList.add('hide');
     directory.innerHTML = "New Book Details";
     formSection.classList.remove('hide');
-
 });
 
 // submit button - for create and edit
@@ -190,6 +189,12 @@ formInput.addEventListener("submit", async (e) => {
         else {
             createdBook = await CoreBookService.createNewBook(newBoook);
         }
+        // clear forms
+        document.querySelector('#title').value = '';
+        document.querySelector('#author').value = '';
+        document.querySelector('#releaseDate').value = '';
+        document.querySelector('#image').value = '';
+        // show book details
         getBookInfo(createdBook);
     }
 });
