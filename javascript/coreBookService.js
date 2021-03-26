@@ -94,7 +94,7 @@ class CoreBookService {
 
     static async removeBook(currentBookId) {
         try {
-            const res = await fetch(`${this.API_URL}/books/${currentBookId}`,
+            const res = await fetch(`${API_URL}/books/${currentBookId}`,
                 {
                     method: 'delete'
                 });
