@@ -8,7 +8,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Henny+Penny&family=PT+Sans+Narrow&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Henny+Penny&family=PT+Sans+Narrow&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -29,22 +30,26 @@
 
         <section class="input-forms hide">
             <h2 id='form-title'></h2>
-            <form id="form-input">
+            <form id="form-input" name="form-input">
                 <div class="input-row">
                     <label for="title">Title</label>
                     <input id="title" type="text" name="title">
+                    <div class="message"></div>
                 </div>
                 <div class="input-row">
                     <label for="author">Author</label>
                     <input id="author" type="text" name="author">
+                    <div class="message"></div>
                 </div>
                 <div class="input-row">
                     <label for="releaseDate">Release Date</label>
                     <input id="releaseDate" type="text" name="releaseDate">
+                    <div class="message"></div>
                 </div>
                 <div class="input-row">
                     <label for="image">Image</label>
                     <input id="image" type="text" name="image">
+                    <div class="message"></div>
                 </div>
                 <div class="input-row">
                     <input type="submit">
@@ -56,6 +61,7 @@
             <div class="edit">Edit Book</div>
         </section>
     </div>
+    <script src="./javascript/utils.js" async defer></script>
     <script src="./javascript/coreBookService.js" async defer></script>
     <script src="./javascript/script.js" async defer></script>
 
