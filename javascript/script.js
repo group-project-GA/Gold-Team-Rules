@@ -101,6 +101,7 @@ const removeBook = async () => {
     return res
 }
 
+// clear validation messages
 const clearFieldsErrorMessage = (fields) => {
     let i, l = fields.length;
     let fieldName, messageDiv;
@@ -111,8 +112,9 @@ const clearFieldsErrorMessage = (fields) => {
     }
 
 }
-
+// display validation messages
 const displayValidations = (validations) => {
+    // clear messages
     clearFieldsErrorMessage(CREATE_BOOK_FIELDS);
     validations.map(validation => {
         let fieldName = Object.keys(validation)[0];
@@ -149,6 +151,8 @@ allBooksButton.addEventListener("click", () => {
 })
 // create a new book button
 createNewButton.addEventListener("click", () => {
+    // clear validation messages
+    clearFieldsErrorMessage(CREATE_BOOK_FIELDS);
     // clear input forms
     document.querySelector('#title').value = '';
     document.querySelector('#author').value = '';
@@ -211,6 +215,8 @@ editButton.addEventListener('click', async () => {
     editing = true;
     // clear details
     removeAllChildren(bookInfoSection);
+    // clear validation messages
+    clearFieldsErrorMessage(CREATE_BOOK_FIELDS);
     // display input forms and 'Editing (book title)'
     bookInfoSection.classList.add('hide');
     allBooksSection.classList.add('hide');
