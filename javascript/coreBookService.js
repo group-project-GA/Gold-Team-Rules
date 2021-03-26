@@ -52,10 +52,7 @@ class CoreBookService {
             },
             body: JSON.stringify(book)
         });
-        
-        const data = await res.json();
-        const newBook = new BookInfo(data.id, data.title, data.author, data.release_date, data.image);
 
-        return newBook;
+        return book;
     }
 }
