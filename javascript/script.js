@@ -16,7 +16,7 @@ let currentBook;
 let editing = false;
 
 //CONSTANTS
-const BOOK_COLORS = ['blueBook', 'greenBook', 'purpleBook', 'redBook', 'yellowBook'];
+const BOOK_COLORS = ['blueBook', 'greenBook', 'orangeBook', 'redBook', 'yellowBook'];
 const CREATE_BOOK_FIELDS = ['title', 'author', 'releaseDate', 'image'];
 
 //FUNCTIONS
