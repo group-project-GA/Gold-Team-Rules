@@ -116,8 +116,11 @@ const removeBook = async () => {
     }
     else {
         // reload all books
+        // clear details
+        removeAllChildren(bookInfoSection);
         bookInfoSection.classList.add('hide');
         editButtonsSection.classList.add('hide');
+        directory.innerHTML = 'Index of All Books';
         getAllBooks();
         allBooksSection.classList.remove('hide');
     }
