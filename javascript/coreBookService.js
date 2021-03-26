@@ -2,8 +2,8 @@ const API_URL = 'https://myapi-profstream.herokuapp.com/api/f97dfc';
 
 class BookInfo {
     constructor(id, title, author, release_date, image) {
-        this.id = id,
-            this.title = title,
+        this.id = id;
+        this.title = title,
             this.author = author,
             this.release_date = release_date,
             this.image = image

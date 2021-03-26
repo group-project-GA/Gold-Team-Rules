@@ -117,7 +117,6 @@ h1{
     background-repeat: no-repeat;
     background-position: center;
     margin: 0 0 62px 0;
-    border: 1px solid red;
     justify-content: center;
     align-items: center;
     padding: 10px;
@@ -167,9 +166,7 @@ h1{
 .bookTitle {
     width:120px;
     display: inline-table;
-    transform: rotate(270deg);
-    border: 1px solid green;
-    
+    transform: rotate(270deg);    
 }
 
 .current-book{
