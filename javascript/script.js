@@ -120,6 +120,7 @@ const removeBook = async () => {
         removeAllChildren(bookInfoSection);
         bookInfoSection.classList.add('hide');
         editButtonsSection.classList.add('hide');
+        directory.innerHTML = 'Index of All Books';
         getAllBooks();
         allBooksSection.classList.remove('hide');
     }
