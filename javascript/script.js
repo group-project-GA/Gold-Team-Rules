@@ -121,6 +121,13 @@ const displayValidations = (validations) => {
     });
 }
 
+const clearErrorMessages =() =>{ 
+let messages = document.querySelectorAll('.message')
+for (key in messages){ 
+if(messages[key].innerHTML){ 
+messages[key].innerHTML = " ";
+}
+}}
 
 //EVENT LISTENERS
 // click on a book
@@ -154,6 +161,7 @@ createNewButton.addEventListener("click", () => {
     document.querySelector('#author').value = '';
     document.querySelector('#releaseDate').value = '';
     document.querySelector('#image').value = '';
+    // clearErrorMessages();
     // not editing
     editing = false;
     // remove details
@@ -164,6 +172,7 @@ createNewButton.addEventListener("click", () => {
     editButtonsSection.classList.add('hide');
     directory.innerHTML = "New Book Details";
     formSection.classList.remove('hide');
+    clearErrorMessages()
 });
 
 // submit button - for create and edit
@@ -221,6 +230,7 @@ editButton.addEventListener('click', async () => {
     document.querySelector('#author').value = currentBook.author;
     document.querySelector('#releaseDate').value = currentBook.release_date;
     document.querySelector('#image').value = currentBook.image;
+    clearErrorMessages();
 
     // submit button handles the rest
 })
