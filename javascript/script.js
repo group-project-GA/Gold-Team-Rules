@@ -114,6 +114,7 @@ allBooksSection.addEventListener("click", async (e) => {
 allBooksButton.addEventListener("click", () => {
     // clear details of book
     removeAllChildren(bookInfoSection);
+    removeAllChildren(allBooksSection);
     // hide other divs
     formSection.classList.add('hide');
     bookInfoSection.classList.add('hide');
@@ -123,7 +124,7 @@ allBooksButton.addEventListener("click", () => {
     allBooksSection.classList.remove('hide');
     editButtonsSection.classList.add('hide');
     directory.innerHTML = "Index of All Books";
-    getAllBooks()
+    
     
 
 })
