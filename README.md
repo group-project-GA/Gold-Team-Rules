@@ -1,4 +1,4 @@
-# Gold-Team-Rules
+# Team Avatar
 ## Using Our Library
 Start by taking a look at an index of all of our books by pressing the 'All Books' button. From there you may select any of the existing books to view their details or press 'Create a new book' to add your own. If you would like to delete a book to make room for more, you may do so by selecting the book you want to delete and pressing the 'Delete' button. While viewing the details of a book, you may edit the details by pressing the 'Edit' button and submitting your changes. Knowledge is power!
 ## Wireframe

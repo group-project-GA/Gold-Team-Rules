@@ -9,6 +9,7 @@ const deleteButton = document.querySelector(".delete");
 const editButton = document.querySelector('.edit');
 const formSection = document.querySelector('.input-forms');
 const formInput = document.querySelector('#form-input');
+const spinner = document.getElementById("spinner");
 
 //VARIABLES
 let currentBookId;
@@ -24,21 +25,32 @@ const CREATE_BOOK_FIELDS = ['title', 'author', 'releaseDate', 'image'];
 const getAllBooks = async () => {
     // clear all books
     removeAllChildren(allBooksSection);
-    const data = await CoreBookService.getAllBooks();
-    for (let i = 0; i < data.length; i++) {
-        // new divs for each book
-        const newBookDiv = document.createElement('div');
-        const newBookTitle = document.createElement('div');
-        // add random color class
-        newBookDiv.classList.add(BOOK_COLORS[Math.floor(Math.random() * BOOK_COLORS.length)]);
-        // set div id to books api id
-        newBookTitle.id = data[i].id;
-        // set book title
-        newBookTitle.innerHTML = data[i].title;
-        newBookTitle.classList.add('bookTitle');
-        newBookTitle.id = data[i].id;
-        allBooksSection.append(newBookDiv);
-        newBookDiv.append(newBookTitle);
+    // show spinner
+    showSpinner();
+    const { error, data } = await CoreBookService.getAllBooks();
+    // hide spinner
+    hideSpinner();
+    if (error) {
+        // display error message
+        displayErrorMessage(error)
+    }
+    else {
+        for (let i = 0; i < data.length; i++) {
+            // new divs for each book
+            const newBookDiv = document.createElement('div');
+            const newBookTitle = document.createElement('div');
+            // add random color class
+            newBookDiv.classList.add(BOOK_COLORS[Math.floor(Math.random() * BOOK_COLORS.length)]);
+            // set div id to books api id
+            newBookTitle.id = data[i].id;
+            // set book title
+            newBookTitle.innerHTML = data[i].title;
+            newBookTitle.classList.add('bookTitle');
+            newBookTitle.id = data[i].id;
+            allBooksSection.append(newBookDiv);
+            newBookDiv.append(newBookTitle);
+        }
+
     }
 }
 
@@ -93,12 +105,18 @@ const removeAllChildren = (parent) => {
 }
 // delete a book
 const removeBook = async () => {
-    let res = await fetch(`https://myapi-profstream.herokuapp.com/api/f97dfc/books/${currentBookId}`,
-        {
-            method: 'delete'
-        });
-    location.reload()
-    return res
+    // show spinner
+    showSpinner();
+    const { error, data } = await CoreBookService.removeBook(currentBookId);
+    // hide spinner
+    hideSpinner();
+    if (error) {
+        // display error message
+        displayErrorMessage(error);
+    }
+    else {
+        location.reload();
+    }
 }
 
 // clear validation messages
@@ -123,14 +141,37 @@ const displayValidations = (validations) => {
     });
 }
 
+const showSpinner = () => {
+    spinner.removeAttribute('hidden');
+    formSection.classList.add('hide');
+}
+
+const hideSpinner = () => {
+    spinner.setAttribute('hidden', '');
+}
+
+const displayErrorMessage = (message) => {
+    alert(message);
+}
+
 
 //EVENT LISTENERS
 // click on a book
 allBooksSection.addEventListener("click", async (e) => {
     if (e.target.id) {
         const bookId = e.target.id;
-        const bookInfo = await CoreBookService.getBookInfo(bookId);
-        getBookInfo(bookInfo);
+        // show spinner
+        showSpinner();
+        const { error, data } = await CoreBookService.getBookInfo(bookId);
+        // hide spinner
+        hideSpinner();
+        if (error) {
+            // display error message
+            displayErrorMessage(error);
+        }
+        else {
+            getBookInfo(data);
+        }
     }
 })
 
@@ -189,18 +230,49 @@ formInput.addEventListener("submit", async (e) => {
         const newBoook = new BookInfo(1, title, author, releaseDate, image);
         // check if editing a book instead of creating
         if (editing) {
-            createdBook = await CoreBookService.editBookInfo(currentBookId, newBoook);
+            // show spinner
+            showSpinner();
+            const { error, data } = await CoreBookService.editBookInfo(currentBookId, newBoook);
+            // hide spinner
+            hideSpinner();
+            if (error) {
+                // display error message
+                displayErrorMessage(error);
+            }
+            else {
+                createdBook = newBoook;
+                // clear forms
+                document.querySelector('#title').value = '';
+                document.querySelector('#author').value = '';
+                document.querySelector('#releaseDate').value = '';
+                document.querySelector('#image').value = '';
+                // show book details
+                getBookInfo(createdBook);
+            }
+
         }
         else {
-            createdBook = await CoreBookService.createNewBook(newBoook);
+            // show spinner
+            showSpinner();
+            const { error, data } = await CoreBookService.createNewBook(newBoook);
+            // hide spinner
+            hideSpinner();
+            if (error) {
+                // display error message
+                displayErrorMessage(error);
+            }
+            else {
+                createdBook = data;
+                // clear forms
+                document.querySelector('#title').value = '';
+                document.querySelector('#author').value = '';
+                document.querySelector('#releaseDate').value = '';
+                document.querySelector('#image').value = '';
+                // show book details
+                getBookInfo(createdBook);
+            }
         }
-        // clear forms
-        document.querySelector('#title').value = '';
-        document.querySelector('#author').value = '';
-        document.querySelector('#releaseDate').value = '';
-        document.querySelector('#image').value = '';
-        // show book details
-        getBookInfo(createdBook);
+
     }
 });
 
