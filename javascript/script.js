@@ -12,6 +12,8 @@ const formInput = document.querySelector('#form-input');
 
 //VARIABLES
 let currentBookId;
+let currentBook;
+let editing = false;
 
 //CONSTANTS
 const BOOK_COLORS = ['blueBook', 'greenBook', 'purpleBook', 'redBook', 'yellowBook'];
@@ -43,6 +45,8 @@ const getAllBooks = async () => {
 const getBookInfo = bookInfo => {
     // set current book id
     currentBookId = bookInfo.id;
+    // get current book
+    currentBook = bookInfo;
     allBooksSection.classList.add('hide');
     formSection.classList.add('hide');
     bookInfoSection.classList.remove('hide');
@@ -109,6 +113,8 @@ allBooksSection.addEventListener("click", async (e) => {
 allBooksButton.addEventListener("click", () => {
     // clear details of book
     removeAllChildren(bookInfoSection);
+    // hide other divs
+    formSection.classList.add('hide');
     bookInfoSection.classList.add('hide');
     // get all books
     getAllBooks();
@@ -120,32 +126,62 @@ allBooksButton.addEventListener("click", () => {
 })
 
 createNewButton.addEventListener("click", () => {
+    // not editing
+    editing = false;
     removeAllChildren(bookInfoSection);
     bookInfoSection.classList.add('hide');
     allBooksSection.classList.remove('hide');
     editButtonsSection.classList.add('hide');
-    directory.innerHTML = "Index of All Books";
+    directory.innerHTML = "New Book Details";
     formSection.classList.remove('hide');
 
 });
 
 formInput.addEventListener("submit", async (e) => {
     e.preventDefault();
+    let createdBook;
     const form = e.target;
     const title = form.title.value;
     const author = form.author.value;
     const releaseDate = form.releaseDate.value;
     const image = form.image.value;
     const newBoook = new BookInfo(1, title, author, releaseDate, image);
-    console.log(newBoook)
-    const createdBook = await CoreBookService.createNewBook(newBoook);
-    console.log(createdBook);
+    // check if editing a book instead of creating
+    if (editing)
+    {
+        createdBook = await CoreBookService.editBookInfo(currentBookId, newBoook);
+    }
+    else
+    {
+        createdBook = await CoreBookService.createNewBook(newBoook);
+    }
     getBookInfo(createdBook);
 });
 
 deleteButton.addEventListener("click", () => {
-    console.log('click');
     removeBook();
+})
+
+// edit book
+editButton.addEventListener('click', async () =>
+{
+    // editing
+    editing = true;
+    // clear details
+    removeAllChildren(bookInfoSection);
+    // display input forms and 'Editing (book title)'
+    bookInfoSection.classList.add('hide');
+    allBooksSection.classList.add('hide');
+    editButtonsSection.classList.add('hide');
+    directory.innerHTML = `Editing ${currentBook.title}`;
+    formSection.classList.remove('hide');
+    // populate input forms
+    document.querySelector('#title').value = currentBook.title;
+    document.querySelector('#author').value = currentBook.author;
+    document.querySelector('#releaseDate').value = currentBook.release_date;
+    document.querySelector('#image').value = currentBook.image;
+
+    // submit button handles the rest
 })
 
 window.addEventListener("load", getAllBooks);
