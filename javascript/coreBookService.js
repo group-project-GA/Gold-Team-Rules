@@ -21,6 +21,7 @@ class CoreBookService {
         });
         const data = await res.json();
         const newBook = new BookInfo(data.id, data.title, data.author, data.release_date, data.image);
+
         return newBook;
     }
 
@@ -39,9 +40,19 @@ class CoreBookService {
         const res = await fetch(`${API_URL}/books/${bookId}`);
         const bookInfo = await res.json();
         const currentBook = new BookInfo(bookInfo.id, bookInfo.title, bookInfo.author, bookInfo.release_date, bookInfo.image)
+
         return currentBook;
     }
 
+    static async editBookInfo(bookId, book) {
+        const res = await fetch(`${API_URL}/books/${bookId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(book)
+        });
 
-
+        return book;
+    }
 }
