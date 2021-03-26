@@ -84,12 +84,13 @@ const getBookInfo = bookInfo => {
     }
 }
 
+// clear html sections
 const removeAllChildren = (parent) => {
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
     }
 }
-// delete single book
+// delete a book
 const removeBook = async () => {
     let res = await fetch(`https://myapi-profstream.herokuapp.com/api/f97dfc/books/${currentBookId}`,
         {
@@ -167,6 +168,7 @@ formInput.addEventListener("submit", async (e) => {
     getBookInfo(createdBook);
 });
 
+// delete book
 deleteButton.addEventListener("click", () => {
     removeBook();
 })
@@ -193,4 +195,5 @@ editButton.addEventListener('click', async () =>
     // submit button handles the rest
 })
 
+//initialize
 window.addEventListener("load", getAllBooks);
