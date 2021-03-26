@@ -47,6 +47,7 @@ const getBookInfo = bookInfo => {
     currentBookId = bookInfo.id;
     // get current book
     currentBook = bookInfo;
+    // hide index and forms, display details
     allBooksSection.classList.add('hide');
     formSection.classList.add('hide');
     bookInfoSection.classList.remove('hide');
@@ -78,6 +79,7 @@ const getBookInfo = bookInfo => {
                 listItems.innerHTML = 'Released:'
                 listDescription.innerHTML = bookInfo.release_date;
             }
+            listItems.append(listDescription);
         }
     }
 }
@@ -99,7 +101,7 @@ const removeBook = async () => {
 
 
 //EVENT LISTENERS
-
+// click on a book
 allBooksSection.addEventListener("click", async (e) => {
     if (e.target.id) {
         const bookId = e.target.id;
@@ -123,11 +125,18 @@ allBooksButton.addEventListener("click", () => {
     directory.innerHTML = "Index of All Books"
 
 })
-
+// create a new book button
 createNewButton.addEventListener("click", () => {
     // not editing
     editing = false;
+    // clear input forms
+    document.querySelector('#title').value = '';
+    document.querySelector('#author').value = '';
+    document.querySelector('#releaseDate').value = '';
+    document.querySelector('#image').value = '';
+    // remove details
     removeAllChildren(bookInfoSection);
+    // hide all areas and display input forms
     bookInfoSection.classList.add('hide');
     allBooksSection.classList.add('hide');
     editButtonsSection.classList.add('hide');
@@ -136,6 +145,7 @@ createNewButton.addEventListener("click", () => {
 
 });
 
+// submit button - for create and edit
 formInput.addEventListener("submit", async (e) => {
     e.preventDefault();
     let createdBook;

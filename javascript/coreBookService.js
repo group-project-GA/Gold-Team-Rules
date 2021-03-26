@@ -45,15 +45,14 @@ class CoreBookService {
     }
 
     static async editBookInfo(bookId, book) {
-        const res = await fetch(`${API_URL}/books/${bookId}`,
-        {
+        const res = await fetch(`${API_URL}/books/${bookId}`, {
             method: 'PUT',
-            headers: 
-            {
+            headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(book)
         });
+        
         const data = await res.json();
         const newBook = new BookInfo(data.id, data.title, data.author, data.release_date, data.image);
 
