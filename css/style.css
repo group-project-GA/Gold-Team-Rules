@@ -238,3 +238,7 @@ dd{
     background-color: green;
     padding: .8em;
 }
+form{
+    font-family: 'PT Sans Narrow';
+    color: rgba(255,106,92,1);
+}
