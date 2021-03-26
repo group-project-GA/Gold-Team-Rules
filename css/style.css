@@ -209,3 +209,21 @@ dd{
 .hide{
     display: none;
 }
+
+.input-forms {
+    margin: auto;
+}
+
+.input-row {
+    margin-bottom: 10px;
+}
+
+.input-row input[type="submit"] {
+    cursor: pointer;
+    outline-style: none;
+    border-style: none;
+    border: 1px solid #ccc;
+    color: white;
+    background-color: green;
+    padding: .8em;
+}
