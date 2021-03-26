@@ -61,26 +61,25 @@ const getBookInfo = bookInfo => {
     infoList.classList.add('book-info');
     bookInfoSection.append(infoList);
     for (key in bookInfo) {
-        if (key === "title" || key === "author" || key === "release_date"){ 
-        let listItemName = key.charAt(0).toUpperCase() + key.slice(1);
-        let listItems = document.createElement('dt');
-        let listDescription = document.createElement('dd');
-        // set elements IDs to the property key
-        listItems.id = key;
-        listItems.innerHTML = `${listItemName}:`;
-        infoList.append(listItems);
-        // display books info
-        if (listItems.id === "title") {
-            listDescription.innerHTML = bookInfo.title;
-        } else if (listItems.id === "author") {
-            listDescription.innerHTML = bookInfo.author;
-        } else if (listItems.id === "release_date") {
-            listItems.innerHTML = 'Released:'
-            listDescription.innerHTML = bookInfo.release_date;
+        if (key === "title" || key === "author" || key === "release_date") {
+            let listItemName = key.charAt(0).toUpperCase() + key.slice(1);
+            let listItems = document.createElement('dt');
+            let listDescription = document.createElement('dd');
+            // set elements IDs to the property key
+            listItems.id = key;
+            listItems.innerHTML = `${listItemName}:`;
+            infoList.append(listItems);
+            // display books info
+            if (listItems.id === "title") {
+                listDescription.innerHTML = bookInfo.title;
+            } else if (listItems.id === "author") {
+                listDescription.innerHTML = bookInfo.author;
+            } else if (listItems.id === "release_date") {
+                listItems.innerHTML = 'Released:'
+                listDescription.innerHTML = bookInfo.release_date;
+            }
         }
-        listItems.append(listDescription);
     }
- }
 }
 
 const removeAllChildren = (parent) => {
@@ -102,10 +101,10 @@ const removeBook = async () => {
 //EVENT LISTENERS
 
 allBooksSection.addEventListener("click", async (e) => {
-    if(e.target.id){ 
-    const bookId = e.target.id;
-    const bookInfo = await CoreBookService.getBookInfo(bookId);
-    getBookInfo(bookInfo);
+    if (e.target.id) {
+        const bookId = e.target.id;
+        const bookInfo = await CoreBookService.getBookInfo(bookId);
+        getBookInfo(bookInfo);
     }
 })
 
@@ -130,7 +129,7 @@ createNewButton.addEventListener("click", () => {
     editing = false;
     removeAllChildren(bookInfoSection);
     bookInfoSection.classList.add('hide');
-    allBooksSection.classList.remove('hide');
+    allBooksSection.classList.add('hide');
     editButtonsSection.classList.add('hide');
     directory.innerHTML = "New Book Details";
     formSection.classList.remove('hide');

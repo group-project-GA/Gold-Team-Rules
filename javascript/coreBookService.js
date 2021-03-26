@@ -4,9 +4,9 @@ class BookInfo {
     constructor(id, title, author, release_date, image) {
         this.id = id;
         this.title = title,
-        this.author = author,
-        this.release_date = release_date,
-        this.image = image
+            this.author = author,
+            this.release_date = release_date,
+            this.image = image
     }
 }
 
@@ -33,7 +33,6 @@ class CoreBookService {
             let newBook = new BookInfo(data[i].id, data[i].title, data[i].author, data[i].release_date, data[i].image);
             allBooks.push(newBook);
         }
-
         return allBooks;
     }
 
