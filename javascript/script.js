@@ -115,6 +115,7 @@ allBooksSection.addEventListener("click", async (e) => {
 allBooksButton.addEventListener("click", () => {
     // clear details of book
     removeAllChildren(bookInfoSection);
+    removeAllChildren(allBooksSection);
     // hide other divs
     formSection.classList.add('hide');
     bookInfoSection.classList.add('hide');
