@@ -284,6 +284,7 @@ formInput.addEventListener("submit", async (e) => {
 deleteButton.addEventListener("click", () => {
     removeAllChildren(bookInfoSection);
     removeBook();
+    directory.innerHTML = "Index of All Books"
 })
 
 // edit book
