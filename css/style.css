@@ -1,22 +1,42 @@
+html { 
+    background: url('./backround.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+
 h1{
+    display: table;
+    margin: 0 auto;
     text-align: center;
+    background-color: rgba(38, 61, 67, .9);
+    color: antiquewhite;
+    font-family: 'Henny Penny';
+    font-size: 50px;
 }
 .container{
-    border: solid black;
+    
     display: flex;
     flex-direction: column;
-    padding:10px;
-    
+    justify-content: center;
+    margin-top: 40px;
     
 }
 .book-buttons{
-    border: solid red;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     padding: 10px;
-    margin: 10px;
     text-align: center;
+    font-family: 'Henny Penny';
+    color:antiquewhite;
+}
+.directory{
+    font-family: 'Henny Penny';
+    color:antiquewhite;
+    font-size: 20px;
 }
 
 #all{
@@ -46,13 +66,14 @@ h1{
 }
 
 .edit-buttons{
-    border: solid red;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    padding: 10px;
-    margin: 10px;
+    margin: -10px;
     text-align: center;
+    font-family: 'Henny Penny';
+    color:antiquewhite;
+    padding: 10px;
 }
 .delete{
     border: solid green;
@@ -82,18 +103,13 @@ h1{
 
 
 .viewing-area{
-    border: solid green;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
 }
-.directory{
-    border: solid blue;
-    padding: 5px;
-    margin:5px;
-}
+
 
 .books{
     background: url('../assets/images/bookshelf.png');
@@ -103,7 +119,6 @@ h1{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: solid blue;
     text-align: center;
     width: 100%;
     margin: 60px 0 0 0;
@@ -117,6 +132,7 @@ h1{
     background-repeat: no-repeat;
     background-position: center;
     margin: 0 0 62px 0;
+    border-radius: 30%;
     justify-content: center;
     align-items: center;
     padding: 10px;
@@ -166,15 +182,15 @@ h1{
 .bookTitle {
     width:120px;
     display: inline-table;
-    transform: rotate(270deg);    
+    transform: rotate(270deg);
 }
+
 
 .current-book{
     display:flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
-    
+    margin-top: -15px;
 }
 
 img{

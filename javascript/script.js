@@ -122,8 +122,10 @@ allBooksButton.addEventListener("click", () => {
     getAllBooks();
     // display all books
     allBooksSection.classList.remove('hide');
-    editButtonsSection.classList.add('hide')
-    directory.innerHTML = "Index of All Books"
+    editButtonsSection.classList.add('hide');
+    directory.innerHTML = "Index of All Books";
+    getAllBooks()
+    
 
 })
 // create a new book button
