@@ -40,29 +40,31 @@ h1{
 }
 
 #all{
-    border: solid green;
     padding: 5px;
     width: 150px;
     height: 30px;
+    border: solid rgba(255,202,70,1);
+    background-color: rgba(255,106,92,1);
     
     
 }
 #all:hover{
     cursor: pointer;
-    color: purple;
+    color: rgba(73,135,172,1);
 }
 
 #create{
-    border:solid green;
     padding: 5px;
     width: 150px;
     height: 30px;
+    border: solid rgba(255,202,70,1);
+    background-color: rgba(255,106,92,1);
     
 }
 
 #create:hover{
     cursor: pointer;
-    color: purple;
+    color: rgba(73,135,172,1);
 }
 
 .edit-buttons{
@@ -76,29 +78,31 @@ h1{
     padding: 10px;
 }
 .delete{
-    border: solid green;
     padding: 5px;
     width: 150px;
     height: 30px;
+    border: solid rgba(255,202,70,1);
+    background-color: rgba(255,106,92,1);
     
     
 }
 .delete:hover{
     cursor: pointer;
-    color: purple;
+    color: rgba(73,135,172,1);
 }
 
 .edit{
-    border:solid green;
     padding: 5px;
     width: 150px;
     height: 30px;
+    border: solid rgba(255,202,70,1);
+    background-color: rgba(255,106,92,1);
     
 }
 
 .edit:hover{
     cursor: pointer;
-    color: purple;
+    color: rgba(73,135,172,1);
 }
 
 
@@ -124,7 +128,7 @@ h1{
     margin: 60px 0 0 0;
 }
 
-.blueBook, .greenBook, .purpleBook, .redBook, .yellowBook {
+.blueBook, .greenBook, .orangeBook, .redBook, .yellowBook {
     height: 150px;
     width: 40px;
     display: flex;
@@ -132,23 +136,24 @@ h1{
     background-repeat: no-repeat;
     background-position: center;
     margin: 0 0 62px 0;
-    border-radius: 30%;
+    border-radius: 35%;
     justify-content: center;
     align-items: center;
     padding: 10px;
 }
-.blueBook:hover, .greenBook:hover, .purpleBook:hover, .redBook:hover, .yellowBook:hover{
+.blueBook:hover, .greenBook:hover, .orangeBook:hover, .redBook:hover, .yellowBook:hover{
     cursor: pointer;
     background-size: contain;
     background-repeat: no-repeat;
+    border-radius: 35%;
 }
 
 .blueBook {
-    background-image: url('../assets/images/blue-book-on-shelf.png');
+    background-image: url('../assets/images/blue-book-on-shelf-2.png');
 }
 
 .blueBook:hover {
-    background-image: url('../assets/images/blue-book-off-shelf.png');
+    background-image: url('../assets/images/blue-book-off-shelf-2.png');
 }
 .greenBook {
     background-image: url('../assets/images/green-book-on-shelf.png');
@@ -157,12 +162,12 @@ h1{
 .greenBook:hover {
     background-image: url('../assets/images/green-book-off-shelf.png');
 }
-.purpleBook {
-    background-image: url('../assets/images/purple-book-on-shelf.png');
+.orangeBook {
+    background-image: url('../assets/images/orange-book-on-shelf.png');
 }
 
-.purpleBook:hover {
-    background-image: url('../assets/images/purple-book-off-shelf.png');
+.orangeBook:hover {
+    background-image: url('../assets/images/orange-book-off-shelf.png');
 }
 .redBook {
     background-image: url('../assets/images/red-book-on-shelf.png');
@@ -183,6 +188,7 @@ h1{
     width:120px;
     display: inline-table;
     transform: rotate(270deg);
+    font-family: 'PT Sans Narrow'
 }
 
 
@@ -197,14 +203,19 @@ img{
     max-width: 200px;
     max-height: 300px;
     padding: 10px;
+    border-radius: 20%;
 }
 
 dt{
     padding: 10px;
     font-weight: bold;
+    color: rgba(255,106,92,1);
+    border-bottom: 1px solid rgba(255,202,70,1);
+    font-family: 'PT Sans Narrow'
 }
 dd{
     font-weight: normal;
+    color:antiquewhite;
 }
 .hide{
     display: none;

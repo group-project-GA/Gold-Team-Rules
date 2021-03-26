@@ -31,7 +31,7 @@ const getAllBooks = async () => {
         const newBookTitle = document.createElement('div');
         // add random color class
         newBookDiv.classList.add(BOOK_COLORS[Math.floor(Math.random() * BOOK_COLORS.length)]);
-        // newBookDiv.classList.add('book');
+        // set div id to books api id
         newBookTitle.id = data[i].id;
         // set book title
         newBookTitle.innerHTML = data[i].title;
@@ -85,12 +85,13 @@ const getBookInfo = bookInfo => {
     }
 }
 
+// clear html sections
 const removeAllChildren = (parent) => {
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
     }
 }
-// delete single book
+// delete a book
 const removeBook = async () => {
     let res = await fetch(`https://myapi-profstream.herokuapp.com/api/f97dfc/books/${currentBookId}`,
         {
@@ -135,6 +136,7 @@ allBooksSection.addEventListener("click", async (e) => {
 allBooksButton.addEventListener("click", () => {
     // clear details of book
     removeAllChildren(bookInfoSection);
+    removeAllChildren(allBooksSection);
     // hide other divs
     formSection.classList.add('hide');
     bookInfoSection.classList.add('hide');
@@ -144,9 +146,6 @@ allBooksButton.addEventListener("click", () => {
     allBooksSection.classList.remove('hide');
     editButtonsSection.classList.add('hide');
     directory.innerHTML = "Index of All Books";
-    getAllBooks()
-
-
 })
 // create a new book button
 createNewButton.addEventListener("click", () => {
@@ -195,6 +194,7 @@ formInput.addEventListener("submit", async (e) => {
     }
 });
 
+// delete book
 deleteButton.addEventListener("click", () => {
     removeBook();
 })
@@ -220,4 +220,5 @@ editButton.addEventListener('click', async () => {
     // submit button handles the rest
 })
 
+//initialize
 window.addEventListener("load", getAllBooks);
