@@ -15,6 +15,7 @@ let currentBookId;
 
 //CONSTANTS
 const BOOK_COLORS = ['blueBook', 'greenBook', 'purpleBook', 'redBook', 'yellowBook'];
+const CREATE_BOOK_FIELDS = ['title', 'author', 'releaseDate', 'image'];
 
 //FUNCTIONS
 // get index of books from api
@@ -93,6 +94,26 @@ const removeBook = async () => {
     return res
 }
 
+const clearFieldsErrorMessage = (fields) => {
+    let i, l = fields.length;
+    let fieldName, messageDiv;
+    for (i = 0; i < l; i++) {
+        fieldName = fields[i];
+        messageDiv = document.querySelector(`#${fieldName} + .message`);
+        messageDiv.innerHTML = "";
+    }
+
+}
+
+const displayValidations = (validations) => {
+    clearFieldsErrorMessage(CREATE_BOOK_FIELDS);
+    validations.map(validation => {
+        const fieldName = Object.keys(validation)[0];
+        const messageDiv = document.querySelector(`#${fieldName} + .message`);
+        messageDiv.innerHTML = validation[fieldName]["message"];
+    });
+}
+
 
 //EVENT LISTENERS
 
@@ -131,15 +152,20 @@ createNewButton.addEventListener("click", () => {
 formInput.addEventListener("submit", async (e) => {
     e.preventDefault();
     const form = e.target;
-    const title = form.title.value;
-    const author = form.author.value;
-    const releaseDate = form.releaseDate.value;
-    const image = form.image.value;
-    const newBoook = new BookInfo(1, title, author, releaseDate, image);
-    console.log(newBoook)
-    const createdBook = await CoreBookService.createNewBook(newBoook);
-    console.log(createdBook);
-    getBookInfo(createdBook);
+    const [isValid, results] = validateForm(form, CREATE_BOOK_FIELDS);
+    if (!isValid) {
+        displayValidations(results);
+    }
+    else {
+        clearFieldsErrorMessage(CREATE_BOOK_FIELDS);
+        const title = form.title.value;
+        const author = form.author.value;
+        const releaseDate = form.releaseDate.value;
+        const image = form.image.value;
+        const newBoook = new BookInfo(1, title, author, releaseDate, image);
+        const createdBook = await CoreBookService.createNewBook(newBoook);
+        getBookInfo(createdBook);
+    }
 });
 
 deleteButton.addEventListener("click", () => {
