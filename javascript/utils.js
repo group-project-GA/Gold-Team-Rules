@@ -9,7 +9,7 @@ const validateForm = (form, fields) => {
             isValid = false;
             result.push({
                 [fieldname]: {
-                    message: `${fieldname} can not be empty`
+                    message: `${fieldname == "releaseDate" ? "release date" : fieldname} can not be empty`
                 }
             })
         }
