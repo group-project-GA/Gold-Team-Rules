@@ -12,7 +12,6 @@ class BookInfo {
 
 class CoreBookService {
     static async createNewBook(book) {
-        console.log(book)
         const res = await fetch(`${API_URL}/books`, {
             method: 'POST',
             headers: {
@@ -20,9 +19,7 @@ class CoreBookService {
             },
             body: JSON.stringify(book)
         });
-        console.log(res);
         const data = await res.json();
-        console.log(data)
         const newBook = new BookInfo(data.id, data.title, data.author, data.release_date, data.image);
         return newBook;
     }
@@ -35,7 +32,6 @@ class CoreBookService {
             let newBook = new BookInfo(data[i].id, data[i].title, data[i].author, data[i].release_date, data[i].image);
             allBooks.push(newBook);
         }
-        // console.log(allBooks);
         return allBooks;
     }
 

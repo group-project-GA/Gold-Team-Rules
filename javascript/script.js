@@ -121,9 +121,9 @@ allBooksButton.addEventListener("click", () => {
 createNewButton.addEventListener("click", () => {
     removeAllChildren(bookInfoSection);
     bookInfoSection.classList.add('hide');
-    allBooksSection.classList.remove('hide');
+    allBooksSection.classList.add('hide');
     editButtonsSection.classList.add('hide');
-    directory.innerHTML = "Index of All Books";
+    directory.innerHTML = "New Book Details";
     formSection.classList.remove('hide');
 
 });
