@@ -24,10 +24,6 @@ const getAllBooks = async () => {
         // new divs for each book
         const newBookDiv = document.createElement('div');
         const newBookTitle = document.createElement('div');
-        newBookDiv.classList.add('book');
-        // newBookDiv.id = data[i].id;
-        // newBookDiv.innerHTML = data[i].title;
-        
         // add random color class
         newBookDiv.classList.add(BOOK_COLORS[Math.floor(Math.random() * BOOK_COLORS.length)]);
         // newBookDiv.classList.add('book');
@@ -59,7 +55,7 @@ const getBookInfo = bookInfo => {
     infoList.classList.add('book-info');
     bookInfoSection.append(infoList);
     for (key in bookInfo) {
-        if (key === "title" || key === "author" || key === "released"){ 
+        if (key === "title" || key === "author" || key === "release_date"){ 
         let listItemName = key.charAt(0).toUpperCase() + key.slice(1);
         let listItems = document.createElement('dt');
         let listDescription = document.createElement('dd');
@@ -72,8 +68,9 @@ const getBookInfo = bookInfo => {
             listDescription.innerHTML = bookInfo.title;
         } else if (listItems.id === "author") {
             listDescription.innerHTML = bookInfo.author;
-        } else if (listItems.id === "released") {
-            listDescription.innerHTML = bookInfo.released;
+        } else if (listItems.id === "release_date") {
+            listItems.innerHTML = "Released:"
+            listDescription.innerHTML = bookInfo.release_date;
         }
         listItems.append(listDescription);
     }
@@ -87,7 +84,7 @@ const removeAllChildren = (parent) => {
 }
 // delete single book
 const removeBook = async () => {
-    let res = await fetch(`https://myapi-profstream.herokuapp.com/api/f97dfc/books/${bookId}`,
+    let res = await fetch(`https://myapi-profstream.herokuapp.com/api/f97dfc/books/${currentBookId}`,
         {
             method: 'delete'
         });
@@ -110,11 +107,14 @@ allBooksSection.addEventListener("click", async (e) => {
 allBooksButton.addEventListener("click", () => {
     // clear details of book
     removeAllChildren(bookInfoSection);
+    removeAllChildren(allBooksSection);
     bookInfoSection.classList.add('hide');
     // display all books
     allBooksSection.classList.remove('hide');
-    editButtonsSection.classList.add('hide')
-    directory.innerHTML = "Index of All Books"
+    editButtonsSection.classList.add('hide');
+    directory.innerHTML = "Index of All Books";
+    getAllBooks()
+    
 
 })
 
@@ -136,6 +136,7 @@ formInput.addEventListener("submit", async (e) => {
     const releaseDate = form.releaseDate.value;
     const image = form.image.value;
     const newBoook = new BookInfo(1, title, author, releaseDate, image);
+    console.log(newBoook)
     const createdBook = await CoreBookService.createNewBook(newBoook);
     console.log(createdBook);
     getBookInfo(createdBook);
