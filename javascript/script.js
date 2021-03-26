@@ -282,6 +282,7 @@ formInput.addEventListener("submit", async (e) => {
 
 // delete book
 deleteButton.addEventListener("click", () => {
+    removeAllChildren(bookInfoSection);
     removeBook();
 })
 
