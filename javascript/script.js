@@ -19,6 +19,8 @@ const BOOK_COLORS = ['blueBook', 'greenBook', 'purpleBook', 'redBook', 'yellowBo
 //FUNCTIONS
 // get index of books from api
 const getAllBooks = async () => {
+    // clear all books
+    removeAllChildren(allBooksSection);
     const data = await CoreBookService.getAllBooks();
     for (let i = 0; i < data.length; i++) {
         // new divs for each book
@@ -108,6 +110,8 @@ allBooksButton.addEventListener("click", () => {
     // clear details of book
     removeAllChildren(bookInfoSection);
     bookInfoSection.classList.add('hide');
+    // get all books
+    getAllBooks();
     // display all books
     allBooksSection.classList.remove('hide');
     editButtonsSection.classList.add('hide')
