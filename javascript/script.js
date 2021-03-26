@@ -115,7 +115,7 @@ const clearFieldsErrorMessage = (fields) => {
 const displayValidations = (validations) => {
     clearFieldsErrorMessage(CREATE_BOOK_FIELDS);
     validations.map(validation => {
-        const fieldName = Object.keys(validation)[0];
+        let fieldName = Object.keys(validation)[0];
         const messageDiv = document.querySelector(`#${fieldName} + .message`);
         messageDiv.innerHTML = validation[fieldName]["message"];
     });
