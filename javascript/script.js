@@ -115,7 +115,12 @@ const removeBook = async () => {
         displayErrorMessage(error);
     }
     else {
-        location.reload();
+        // location.reload();
+        // reload all books
+        bookInfoSection.classList.add('hide');
+        editButtonsSection.classList.add('hide');
+        getAllBooks();
+        allBooksSection.classList.remove('hide');
     }
 }
 
