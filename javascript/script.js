@@ -213,6 +213,7 @@ createNewButton.addEventListener("click", () => {
     editButtonsSection.classList.add('hide');
     directory.innerHTML = "New Book Details";
     formSection.classList.remove('hide');
+    clearFieldsErrorMessage(CREATE_BOOK_FIELDS);
 });
 
 // submit button - for create and edit
@@ -303,6 +304,7 @@ editButton.addEventListener('click', async () => {
     document.querySelector('#author').value = currentBook.author;
     document.querySelector('#releaseDate').value = currentBook.release_date;
     document.querySelector('#image').value = currentBook.image;
+    clearFieldsErrorMessage(CREATE_BOOK_FIELDS)
 
     // submit button handles the rest
 })

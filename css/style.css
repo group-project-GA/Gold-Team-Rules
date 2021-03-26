@@ -238,12 +238,80 @@ dd{
     background-color: green;
     padding: .8em;
 }
-
+form{
+    font-family: 'PT Sans Narrow';
+    color: rgba(255,106,92,1);
+}
 .message {
     text-align: center;
     color: red;
 }
 
+<<<<<<< HEAD
+
+@media only screen and (max-width : 1255px), screen and (max-height:700px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 100px;
+    }
+
+    .blueBook, .greenBook, .orangeBook, .redBook, .yellowBook {
+        height: 130px;
+        width: 30px;
+        display: flex;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin: 0 0 110px 0;
+        border-radius: 35%;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+    }
+
+    img{
+        max-width: 100px;
+        max-height: 200px;
+        padding: 10px;
+        border-radius: 20%;
+    }
+
+.edit-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: -20px;
+    text-align: center;
+    font-family: 'Henny Penny';
+    color: antiquewhite;
+    padding: 10px;
+}
+
+}
+@media only screen and (min-width : 1600px), screen and (min-height:900px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 200px;
+    }
+    .blueBook, .greenBook, .orangeBook, .redBook, .yellowBook {
+        height: 175px;
+        width: 65px;
+        display: flex;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin: 0 0 68px 0;
+        border-radius: 35%;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+    }
+}
+=======
 #spinner:not([hidden]) {
     position: fixed;
     top: 0;
@@ -274,3 +342,4 @@ dd{
       transform: rotate(360deg);
     }
   }
+>>>>>>> d323f50180c2bf94041acb2440dd4a4fb04ffcb7
