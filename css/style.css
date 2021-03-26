@@ -238,3 +238,8 @@ dd{
     background-color: green;
     padding: .8em;
 }
+
+.message {
+    text-align: center;
+    color: red;
+}
