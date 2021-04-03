@@ -1,4 +1,4 @@
-const API_URL = 'https://myapi-profstream.herokuapp.com/api/f97dfc';
+const API_URL = 'http://localhost:3000';
 
 class BookInfo {
     constructor(id, title, author, release_date, image) {

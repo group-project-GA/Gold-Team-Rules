@@ -247,10 +247,6 @@ form{
     color: red;
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 0d94ddb735b36f4e3d044fd0c902df023b3c865e
 @media only screen and (max-width : 1255px), screen and (max-height:700px) {
     .container {
         display: flex;
@@ -313,8 +309,6 @@ form{
         padding: 10px;
     }
 }
-<<<<<<< HEAD
-=======
 #spinner:not([hidden]) {
     position: fixed;
     top: 0;
@@ -345,4 +339,3 @@ form{
       transform: rotate(360deg);
     }
   }
->>>>>>> 0d94ddb735b36f4e3d044fd0c902df023b3c865e
